@@ -2517,4 +2517,17 @@ article.single-post p {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5L3.75 4l-2.5 2.5L2.75 8l4-4-4-4z'/%3e%3c/svg%3e");
   margin-left: 50px;
 }
+
+.brand-img{
+  width:80%;
+  height: auto;
+  margin: auto;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.card-brand{
+  margin-bottom: 25px;
+  box-shadow: 1px 1px 10px #e5e5e5;
+}
 /*# sourceMappingURL=maps/style.css.map */

@@ -113,13 +113,14 @@
 											</a>
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
+											<h4 class="card-title"><a href="">Bengkel BOS</a></h4>
 											<ul class="list-inline product-meta">
+												<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
+													<a href=""><i class="fas fa-car"></i>Mobil</a>
 												</li>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-calendar"></i>26th December</a>
+													<a href=""><i class="fas fa-motorcycle"></i>Motor</a>
 												</li>
 											</ul>
 											<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
@@ -147,13 +148,14 @@
 											</a>
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="">Full Study Table Combo</a></h4>
+											<h4 class="card-title"><a href="">Bengkel Amanah Jaya</a></h4>
 											<ul class="list-inline product-meta">
+											<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-folder-open-o"></i>Furnitures</a>
+													<a href=""><i class="fas fa-car"></i>Mobil</a>
 												</li>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-calendar"></i>26th December</a>
+													<a href=""><i class="fas fa-motorcycle"></i>Motor</a>
 												</li>
 											</ul>
 											<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
@@ -181,13 +183,14 @@
 											</a>
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
+											<h4 class="card-title"><a href="">Bengkel Aryo</a></h4>
 											<ul class="list-inline product-meta">
+											<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
+													<a href=""><i class="fas fa-car"></i>Mobil</a>
 												</li>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-calendar"></i>26th December</a>
+													<a href=""><i class="fas fa-motorcycle"></i>Motor</a>
 												</li>
 											</ul>
 											<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
@@ -215,17 +218,18 @@
 										<div class="thumb-content">
 											<!-- <div class="price">$200</div> -->
 											<a href="">
-												<img class="card-img-top img-fluid bengkel-img" src="https://cdn-2.tstatic.net/tribunnews/foto/bank/images/bengkel-terbesar-yamaha.jpg" alt="Card image cap">
+												<img class="card-img-top img-fluid bengkel-img" src="https://us.123rf.com/450wm/rh2010/rh20101812/rh2010181200647/114132649-auto-mechanic-in-red-uniform-servicing-sports-car-checking-front-brakes-in-the-car-service.jpg?ver=6" alt="Card image cap">
 											</a>
 										</div>
 										<div class="card-body">
 											<h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
 											<ul class="list-inline product-meta">
+											<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
+													<a href=""><i class="fas fa-car"></i>Mobil</a>
 												</li>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-calendar"></i>26th December</a>
+													<a href=""><i class="fas fa-motorcycle"></i>Motor</a>
 												</li>
 											</ul>
 											<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
@@ -249,17 +253,18 @@
 										<div class="thumb-content">
 											<!-- <div class="price">$200</div> -->
 											<a href="">
-												<img class="card-img-top img-fluid bengkel-img" src="https://vivaautorepairs.com.au/wp-content/uploads/2018/11/Car-workshop-near-me.jpg" alt="Card image cap">
+												<img class="card-img-top img-fluid bengkel-img" src="https://miro.medium.com/max/1140/0*N0CTJji2zmNtlfXo.png" alt="Card image cap">
 											</a>
 										</div>
 										<div class="card-body">
 											<h4 class="card-title"><a href="">Full Study Table Combo</a></h4>
 											<ul class="list-inline product-meta">
+											<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-folder-open-o"></i>Furnitures</a>
+													<a href=""><i class="fas fa-car"></i>Mobil</a>
 												</li>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-calendar"></i>26th December</a>
+													<a href=""><i class="fas fa-motorcycle"></i>Motor</a>
 												</li>
 											</ul>
 											<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
@@ -283,17 +288,18 @@
 										<div class="thumb-content">
 											<!-- <div class="price">$200</div> -->
 											<a href="">
-												<img class="card-img-top img-fluid bengkel-img" src="https://moto-champ.net/wp-content/uploads/2018/10/800px_COLOURBOX4906548-750x430.jpg" alt="Card image cap">
+												<img class="card-img-top img-fluid bengkel-img" src="https://op-jacaranda.s3.amazonaws.com/uploads/listing/images/3694/1st_Automobile_Services.jpg" alt="Card image cap">
 											</a>
 										</div>
 										<div class="card-body">
 											<h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
 											<ul class="list-inline product-meta">
+												<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
+													<a href=""><i class="fas fa-car"></i>Mobil</a>
 												</li>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-calendar"></i>26th December</a>
+													<a href=""><i class="fas fa-motorcycle"></i>Motor</a>
 												</li>
 											</ul>
 											<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
@@ -321,17 +327,18 @@
 										<div class="thumb-content">
 											<!-- <div class="price">$200</div> -->
 											<a href="">
-												<img class="card-img-top img-fluid bengkel-img" src="https://cdn-2.tstatic.net/tribunnews/foto/bank/images/bengkel-terbesar-yamaha.jpg" alt="Card image cap">
+												<img class="card-img-top img-fluid bengkel-img" src="https://images.allaboutwhitianga.co.nz/thumbnail/1500x500s/52/79/93/charlies-workshop-85-1499398020.jpg" alt="Card image cap">
 											</a>
 										</div>
 										<div class="card-body">
 											<h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
 											<ul class="list-inline product-meta">
+												<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
+													<a href=""><i class="fas fa-car"></i>Mobil</a>
 												</li>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-calendar"></i>26th December</a>
+													<a href=""><i class="fas fa-motorcycle"></i>Motor</a>
 												</li>
 											</ul>
 											<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
@@ -355,17 +362,18 @@
 										<div class="thumb-content">
 											<!-- <div class="price">$200</div> -->
 											<a href="">
-												<img class="card-img-top img-fluid bengkel-img" src="https://vivaautorepairs.com.au/wp-content/uploads/2018/11/Car-workshop-near-me.jpg" alt="Card image cap">
+												<img class="card-img-top img-fluid bengkel-img" src="http://www.reachautoerp.sg/wp-content/uploads/2019/04/car-workshop.jpg" alt="Card image cap">
 											</a>
 										</div>
 										<div class="card-body">
 											<h4 class="card-title"><a href="">Full Study Table Combo</a></h4>
 											<ul class="list-inline product-meta">
+											<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-folder-open-o"></i>Furnitures</a>
+													<a href=""><i class="fas fa-car"></i>Mobil</a>
 												</li>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-calendar"></i>26th December</a>
+													<a href=""><i class="fas fa-motorcycle"></i>Motor</a>
 												</li>
 											</ul>
 											<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
@@ -395,11 +403,12 @@
 										<div class="card-body">
 											<h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
 											<ul class="list-inline product-meta">
+												<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
+													<a href=""><i class="fas fa-car"></i>Mobil</a>
 												</li>
 												<li class="list-inline-item">
-													<a href=""><i class="fa fa-calendar"></i>26th December</a>
+													<a href=""><i class="fas fa-motorcycle"></i>Motor</a>
 												</li>
 											</ul>
 											<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
@@ -436,7 +445,7 @@
 
 
 <!--==========================================
-=            All Category Section            =
+=            Brands Section            =
 ===========================================-->
 
 <section class="section bg-light">
@@ -446,132 +455,47 @@
 			<div class="col-12">
 				<!-- Section title -->
 				<div class="section-title">
-					<h2>All Categories</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!</p>
+					<h2>Brands</h2>
+					<p>Temukan bengkel untuk berbagai macam brand!</p>
 				</div>
 				<div class="row">
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-laptop icon-bg-1"></i> 
-								<h4>Electronics</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">Laptops <span>93</span></a></li>
-								<li><a href="category.html">Iphone <span>233</span></a></li>
-								<li><a href="category.html">Microsoft  <span>183</span></a></li>
-								<li><a href="category.html">Monitors <span>343</span></a></li>
-							</ul>
-						</div>
-					</div> <!-- /Category List -->
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-apple icon-bg-2"></i> 
-								<h4>Restaurants</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">Cafe <span>393</span></a></li>
-								<li><a href="category.html">Fast food <span>23</span></a></li>
-								<li><a href="category.html">Restaurants  <span>13</span></a></li>
-								<li><a href="category.html">Food Track<span>43</span></a></li>
-							</ul>
-						</div>
-					</div> <!-- /Category List -->
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-home icon-bg-3"></i> 
-								<h4>Real Estate</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">Farms <span>93</span></a></li>
-								<li><a href="category.html">Gym <span>23</span></a></li>
-								<li><a href="category.html">Hospitals  <span>83</span></a></li>
-								<li><a href="category.html">Parolurs <span>33</span></a></li>
-							</ul>
-						</div>
-					</div> <!-- /Category List -->
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-shopping-basket icon-bg-4"></i> 
-								<h4>Shoppings</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">Mens Wears <span>53</span></a></li>
-								<li><a href="category.html">Accessories <span>212</span></a></li>
-								<li><a href="category.html">Kids Wears <span>133</span></a></li>
-								<li><a href="category.html">It & Software <span>143</span></a></li>
-							</ul>
-						</div>
-					</div> <!-- /Category List -->
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-briefcase icon-bg-5"></i> 
-								<h4>Jobs</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">It Jobs <span>93</span></a></li>
-								<li><a href="category.html">Cleaning & Washing <span>233</span></a></li>
-								<li><a href="category.html">Management  <span>183</span></a></li>
-								<li><a href="category.html">Voluntary Works <span>343</span></a></li>
-							</ul>
-						</div>
-					</div> <!-- /Category List -->
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-car icon-bg-6"></i> 
-								<h4>Vehicles</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">Bus <span>193</span></a></li>
-								<li><a href="category.html">Cars <span>23</span></a></li>
-								<li><a href="category.html">Motobike  <span>33</span></a></li>
-								<li><a href="category.html">Rent a car <span>73</span></a></li>
-							</ul>
-						</div>
-					</div> <!-- /Category List -->
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-paw icon-bg-7"></i> 
-								<h4>Pets</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">Cats <span>65</span></a></li>
-								<li><a href="category.html">Dogs <span>23</span></a></li>
-								<li><a href="category.html">Birds  <span>113</span></a></li>
-								<li><a href="category.html">Others <span>43</span></a></li>
-							</ul>
-						</div>
-					</div> <!-- /Category List -->
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-laptop icon-bg-8"></i> 
-								<h4>Services</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">Cleaning <span>93</span></a></li>
-								<li><a href="category.html">Car Washing <span>233</span></a></li>
-								<li><a href="category.html">Clothing  <span>183</span></a></li>
-								<li><a href="category.html">Business <span>343</span></a></li>
-							</ul>
-						</div>
-					</div> <!-- /Category List -->
-					
-					
+					<!-- brand -->
+					<div class="col-md-4">
+						<div class="card card-brand zoom">
+							<img class="card-img-top brand-img" src="/brand-img/001-kia.png" alt="Card image cap">
+							<h1 class="m-0 mb-1" style="text-align:center">KIA</h1>
+						</div>					
+					</div>
+					<div class="col-md-4">
+						<div class="card card-brand zoom">
+							<img class="card-img-top brand-img" src="/brand-img/068-lexus.png" alt="Card image cap">
+							<h1 class="m-0 mb-1" style="text-align:center">Lexus</h1>
+						</div>					
+					</div>
+					<div class="col-md-4">
+						<div class="card card-brand zoom">
+							<img class="card-img-top brand-img" src="/brand-img/029-yamaha.png" alt="Card image cap">
+							<h1 class="m-0 mb-1" style="text-align:center">Yamaha</h1>
+						</div>					
+					</div>
+					<div class="col-md-4">
+						<div class="card card-brand zoom">
+							<img class="card-img-top brand-img" src="/brand-img/060-suzuki.png" alt="Card image cap">
+							<h1 class="m-0 mb-1" style="text-align:center">Suzuki</h1>
+						</div>					
+					</div>
+					<div class="col-md-4">
+						<div class="card card-brand zoom">
+							<img class="card-img-top brand-img" src="/brand-img/069-honda.png" alt="Card image cap">
+							<h1 class="m-0 mb-1" style="text-align:center">Honda</h1>
+						</div>					
+					</div>
+					<div class="col-md-4">
+						<div class="card card-brand zoom">
+							<img class="card-img-top brand-img" src="/brand-img/077-mitsubishi.png" alt="Card image cap">
+							<h1 class="m-0 mb-1" style="text-align:center">Mitsubishi</h1>
+						</div>					
+					</div>
 				</div>
 			</div>
 		</div>
