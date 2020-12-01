@@ -81,7 +81,7 @@
                             </ul>
                             <ul class="navbar-nav ml-auto main-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Login</a>
+                                    <a class="nav-link" href="/login">Login</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#"> Sign Up</a>

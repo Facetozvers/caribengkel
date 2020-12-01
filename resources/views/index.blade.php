@@ -18,32 +18,13 @@
 					<!-- search bar -->
 					<form action="">
 						<div class="input-group md-form form-sm form-2 pl-0 pb-2" style="width:60%;margin:auto">
-							<input class="form-control my-0 py-1 lime-border" style="background:white" type="text" placeholder="Search" aria-label="Search">
+							<input class="form-control my-0 py-1 lime-border" style="background:white" type="text" placeholder="Cari Bengkel ..." aria-label="Search">
 							<div class="input-group-append">
 								<button type="submit" class="input-group-text lime lighten-2" id="basic-text1"><i class="fas fa-search text-grey" aria-hidden="true"></i></button>
 							</div>
 						</div>
 					</form>
 					
-					<div class="short-popular-category-list text-center">
-						<h2>Popular Category</h2>
-						<ul class="list-inline">
-							<li class="list-inline-item">
-								<a href=""><i class="fa fa-bed"></i> Hotel</a></li>
-							<li class="list-inline-item">
-								<a href=""><i class="fa fa-grav"></i> Fitness</a>
-							</li>
-							<li class="list-inline-item">
-								<a href=""><i class="fa fa-car"></i> Cars</a>
-							</li>
-							<li class="list-inline-item">
-								<a href=""><i class="fa fa-cutlery"></i> Restaurants</a>
-							</li>
-							<li class="list-inline-item">
-								<a href=""><i class="fa fa-coffee"></i> Cafe</a>
-							</li>
-						</ul>
-					</div>
 				</div>
 				
 			</div>
@@ -222,7 +203,7 @@
 											</a>
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
+											<h4 class="card-title"><a href="">Bengkel Motor Joni</a></h4>
 											<ul class="list-inline product-meta">
 											<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
@@ -257,12 +238,9 @@
 											</a>
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="">Full Study Table Combo</a></h4>
+											<h4 class="card-title"><a href="">AHASS Motor Kelapa Gading</a></h4>
 											<ul class="list-inline product-meta">
 											<p class="mb-0">Melayani :</p>
-												<li class="list-inline-item">
-													<a href=""><i class="fas fa-car"></i>Mobil</a>
-												</li>
 												<li class="list-inline-item">
 													<a href=""><i class="fas fa-motorcycle"></i>Motor</a>
 												</li>
@@ -292,7 +270,7 @@
 											</a>
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
+											<h4 class="card-title"><a href="">BMW Workshop Pondok Indah</a></h4>
 											<ul class="list-inline product-meta">
 												<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
@@ -331,7 +309,7 @@
 											</a>
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
+											<h4 class="card-title"><a href="">Bengkel Jaya Abadi</a></h4>
 											<ul class="list-inline product-meta">
 												<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
@@ -366,7 +344,7 @@
 											</a>
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="">Full Study Table Combo</a></h4>
+											<h4 class="card-title"><a href="">Honda Kalimalang</a></h4>
 											<ul class="list-inline product-meta">
 											<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
@@ -401,7 +379,7 @@
 											</a>
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
+											<h4 class="card-title"><a href="">Bengkel Roni Pondok Gede</a></h4>
 											<ul class="list-inline product-meta">
 												<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
@@ -455,8 +433,8 @@
 			<div class="col-12">
 				<!-- Section title -->
 				<div class="section-title">
-					<h2>Brands</h2>
-					<p>Temukan bengkel untuk berbagai macam brand!</p>
+					<h2>Sparepart</h2>
+					<p>Temukan sparepart untuk berbagai macam brand!</p>
 				</div>
 				<div class="row">
 					<!-- brand -->
