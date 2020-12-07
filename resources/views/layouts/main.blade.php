@@ -32,13 +32,13 @@
 </head>
 
 <body class="body-wrapper">
-    <section>
+    <section class="navbar-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <nav class="navbar navbar-expand-lg navigation">
+                    <nav class="navbar navbar-expand-lg navigation py-1">
                         <a class="navbar-brand" href="index.html">
-                            <img src="/main/images/logo.png" alt="">
+                            <img src="/main/images/logo.png" style="height:90px; width:auto" alt="">
                         </a>
                         <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="dark-blue-text"><i class="fas fa-bars fa-1x"></i></span>

@@ -13,7 +13,7 @@
 			<div class="col-md-12">
 				<!-- Header Contetnt -->
 				<div class="content-block">
-					<h1>PORTAL BENGKEL OTOMOTIF<br>SE-INDONESIA!</h1>
+					<h1>PORTAL BENGKEL OTOMOTIF<br>SE-JAKARTA!</h1>
 					<p>Temukan bengkel terbaik untuk mobil dan motor kamu hanya di caribengkel.id</p>
 					<!-- search bar -->
 					<form action="">
@@ -86,15 +86,15 @@
 							<div class="col-sm-4 col-4 col-lg-4">
 								<!-- product card -->
 								<div class="product-item bg-light">
+									<a href="/bengkel">
 									<div class="card category-otomotif">
 										<div class="thumb-content">
 											<!-- <div class="price">$200</div> -->
-											<a href="">
-												<img class="card-img-top img-fluid bengkel-img" src="https://cdn-2.tstatic.net/tribunnews/foto/bank/images/bengkel-terbesar-yamaha.jpg" alt="Card image cap">
-											</a>
+											<img class="card-img-top img-fluid bengkel-img" src="https://cdn-2.tstatic.net/tribunnews/foto/bank/images/bengkel-terbesar-yamaha.jpg" alt="Bengkel Bos">
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="">Bengkel BOS</a></h4>
+											<h4 class="card-title">Bengkel BOS</h4>
+											<p class="card-text mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Kebon Jeruk, Jakarta Barat</p>
 											<ul class="list-inline product-meta">
 												<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
@@ -115,6 +115,7 @@
 											</div>
 										</div>
 									</div>
+									</a>
 								</div>
 							</div>
 							<div class="col-sm-4 col-4 col-lg-4">
@@ -129,6 +130,7 @@
 										</div>
 										<div class="card-body">
 											<h4 class="card-title"><a href="">Bengkel Amanah Jaya</a></h4>
+											<p class="card-text mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Kebon Jeruk, Jakarta Barat</p>
 											<ul class="list-inline product-meta">
 											<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
@@ -163,6 +165,7 @@
 										</div>
 										<div class="card-body">
 											<h4 class="card-title"><a href="">Bengkel Aryo</a></h4>
+											<p class="card-text mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Kebon Jeruk, Jakarta Barat</p>
 											<ul class="list-inline product-meta">
 											<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
@@ -201,6 +204,7 @@
 										</div>
 										<div class="card-body">
 											<h4 class="card-title"><a href="">Bengkel Motor Joni</a></h4>
+											<p class="card-text mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Kebon Jeruk, Jakarta Barat</p>
 											<ul class="list-inline product-meta">
 											<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
@@ -235,6 +239,7 @@
 										</div>
 										<div class="card-body">
 											<h4 class="card-title"><a href="">AHASS Motor Kelapa Gading</a></h4>
+											<p class="card-text mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Kebon Jeruk, Jakarta Barat</p>
 											<ul class="list-inline product-meta">
 											<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
@@ -266,6 +271,7 @@
 										</div>
 										<div class="card-body">
 											<h4 class="card-title"><a href="">BMW Workshop Pondok Indah</a></h4>
+											<p class="card-text mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Kebon Jeruk, Jakarta Barat</p>
 											<ul class="list-inline product-meta">
 												<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
@@ -304,6 +310,7 @@
 										</div>
 										<div class="card-body">
 											<h4 class="card-title"><a href="">Bengkel Jaya Abadi</a></h4>
+											<p class="card-text mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Kebon Jeruk, Jakarta Barat</p>
 											<ul class="list-inline product-meta">
 												<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
@@ -338,6 +345,7 @@
 										</div>
 										<div class="card-body">
 											<h4 class="card-title"><a href="">Honda Kalimalang</a></h4>
+											<p class="card-text mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Kebon Jeruk, Jakarta Barat</p>
 											<ul class="list-inline product-meta">
 											<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
@@ -372,6 +380,7 @@
 										</div>
 										<div class="card-body">
 											<h4 class="card-title"><a href="">Bengkel Roni Pondok Gede</a></h4>
+											<p class="card-text mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Kebon Jeruk, Jakarta Barat</p>
 											<ul class="list-inline product-meta">
 												<p class="mb-0">Melayani :</p>
 												<li class="list-inline-item">
