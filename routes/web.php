@@ -19,9 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/bengkel', 'BengkelController@show');
 
-Auth::routes();
+Route::get('/cari-bengkel/mobil', 'CariBengkelController@mobil');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
