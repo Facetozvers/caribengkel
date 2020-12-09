@@ -6,7 +6,7 @@
 =            Hero Area            =
 ================================-->
 
-<section class="hero-area bg-1 text-center overly">
+<section class="hero-area bg-1 text-center overly hero-search">
 	<!-- Container Start -->
 	<div class="container">
 		<div class="row">
@@ -18,7 +18,7 @@
 					<!-- search bar -->
 					<form action="">
 						<div class="input-group md-form form-sm form-2 pl-0 pb-2" style="width:60%;margin:auto">
-							<input class="form-control my-0 py-1 lime-border" style="background:white" type="text" placeholder="Cari Bengkel ..." aria-label="Search">
+							<input class="form-control my-0 py-1 lime-border" style="background:white" type="text" placeholder="Cari bengkel, sparepart.." aria-label="Search">
 							<div class="input-group-append">
 								<button type="submit" class="input-group-text lime lighten-2" id="basic-text1"><i class="fas fa-search text-grey" aria-hidden="true"></i></button>
 							</div>

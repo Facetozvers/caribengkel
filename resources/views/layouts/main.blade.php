@@ -80,12 +80,34 @@
                                 </li>
                             </ul>
                             <ul class="navbar-nav ml-auto main-nav">
+                              @guest
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/login">Login</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"> Sign Up</a>
+                                @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Sign Up') }}</a>
+                                    </li>
+                                @endif
+                                @else
+                                <li class="nav-item dropdown dropdown-slide">
+                                    <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->name }} <span><i class="fa fa-angle-down"></i></span>
+                                    </a>
+                                    <!-- Dropdown list -->
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                          onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
                                 </li>
+                              @endguest
                             </ul>
                         </div>
                     </nav>

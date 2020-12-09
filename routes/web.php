@@ -21,3 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/bengkel', 'BengkelController@show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
