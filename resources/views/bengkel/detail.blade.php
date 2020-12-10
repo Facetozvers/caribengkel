@@ -9,11 +9,11 @@
 	<!-- Container Start -->
 	<div class="container pb-5">
 		<div class="product-details">
-			<h1 class="product-title">Bengkel AHASS Honda Rawamangun</h1>
+			<h1 class="product-title">{{$bengkel->nama_bengkel}}</h1>
 			<div class="product-meta">
 				<ul class="list-inline">
-					<li class="list-inline-item"><i class="fa fa-user-o"></i> By <a href="">Andrew</a></li>
-					<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href="">Rawamangun</a></li>
+					<li class="list-inline-item"><i class="fa fa-user-o"></i> By <a href="">{{$bengkel->id_pemilik}}</a></li>
+					<li class="list-inline-item"><i class="fa fa-location-arrow"></i> <a href="">{{$bengkel->daerah}}, {{$bengkel->kota}}</a></li>
 				</ul>
 			</div>
 		</div>

@@ -52,12 +52,14 @@
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-md-4">
+				<a href="/cari-bengkel/mobil">
 				<div class="card category-otomotif zoom" style="background:#26abff">
 					<img class="card-img-top" src="/fontawesome/svgs/solid/car.svg" alt="Card image cap" style="width:250px;height:250px;margin:auto">
 					<div class="card-body">
 						<h5 class="card-title" style="text-align:center;color:white">Mobil</h5>
 					</div>
 				</div>
+				</a>
 			</div>
 			<div class="col-md-4">
 				<div class="card category-otomotif zoom" style="background:#26abff">

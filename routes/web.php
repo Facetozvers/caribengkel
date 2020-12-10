@@ -20,8 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::get('/bengkel', 'BengkelController@show');
+Route::get('/bengkel/{id}', 'BengkelController@show');
 
 Route::get('/cari-bengkel/mobil', 'CariBengkelController@mobil');
+
+Route::get('/search', 'SearchController@index');
 
 

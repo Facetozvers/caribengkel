@@ -44,6 +44,14 @@
                             <span class="dark-blue-text"><i class="fas fa-bars fa-1x"></i></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <form class="ml-auto">
+                                <div class="input-group">
+                                    <input class="form-control search-bar-nav " style="background:white" type="text" placeholder="Cari bengkel, sparepart.." aria-label="Search">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="input-group-text lime lighten-2" id="basic-text1"><i class="fas fa-search text-grey" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+                            </form>
                             <ul class="navbar-nav ml-auto main-nav">
                               @guest
                                 <li class="nav-item">
@@ -177,7 +185,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
 <script src="/main/js/scripts.js"></script>
 <script src="/search-box/js/extention/choices.js"></script>
-
 
 </body>
 

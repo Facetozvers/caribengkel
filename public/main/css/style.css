@@ -1427,8 +1427,15 @@ ul.pagination .active a {
 }
 
 .product-details .product-title {
-  font-size: 25px;
+  font-size: 40px;
   font-weight: 600;
+}
+
+@media only screen and (max-width: 600px) {
+  .product-details .product-title {
+    font-size: 25px;
+    font-weight: 600;
+  }
 }
 
 .product-details .tab-title {
@@ -2570,11 +2577,24 @@ article.single-post p {
   background: rgb(205,234,242);
   background: linear-gradient(90deg, rgba(205,234,242,1) 28%, rgba(171,220,230,1) 70%);
 }
+
+.product-img-small{
+  height: 180px;
+  object-fit:cover;
+  margin:auto;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .bengkel-img {
     height: 100px;
     width: auto;
     object-fit: cover;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .search-bar-nav {
+    width: 600px
   }
 }
