@@ -73,38 +73,100 @@
 					<div class="content" style="padding:0">
 						<div class="tab-content" id="pills-tabContent">
 							<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-								<h3 class="tab-title">Product Description</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laudantium beatae quod perspiciatis, neque dolores eos rerum, ipsa iste cum culpa numquam amet provident eveniet pariatur, sunt repellendus quas voluptate dolor cumque autem molestias. Ab quod quaerat molestias culpa eius, perferendis facere vitae commodi maxime qui numquam ex voluptatem voluptate, fuga sequi, quasi! Accusantium eligendi vitae unde iure officia amet molestiae velit assumenda, quidem beatae explicabo dolore laboriosam mollitia quod eos, eaque voluptas enim fuga laborum, error provident labore nesciunt ad. Libero reiciendis necessitatibus voluptates ab excepturi rem non, nostrum aut aperiam? Itaque, aut. Quas nulla perferendis neque eveniet ullam?</p>
+								<h3 class="tab-title">Detail</h3>
+								<p class="mb-2" style="font-size:17px">Melayani Service :</p>
+								<div class="row mb-3">
+									<div class="col-md-3">
+										<span style="font-size: 23px"><i class="fas fa-car"></i> Mobil</span>
+									</div>
+									<div class="col-md-3">
+										<span style="font-size: 23px"><i class="fas fa-motorcycle"></i> Motor</span>
+									</div>
+								</div>
+								<p style="font-size:17px">Support :</p>
+								<p class="mb-5" style="font-size: 23px; color:black">
+									@for($i = 0;$i < 15 && $bengkel->{'specialties'.$i} != NULL; $i++)
+										{{ $bengkel->{'specialties'.$i} }}, 
+									@endfor
+								</p>
 
-								<iframe width="100%" height="400" src="https://www.youtube.com/embed/LUH7njvhydE?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-								<p></p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam sed, officia reiciendis necessitatibus obcaecati eum, quaerat unde illo suscipit placeat nihil voluptatibus ipsa omnis repudiandae, excepturi! Id aperiam eius perferendis cupiditate exercitationem, mollitia numquam fuga, inventore quam eaque cumque fugiat, neque repudiandae dolore qui itaque iste asperiores ullam ut eum illum aliquam dignissimos similique! Aperiam aut temporibus optio nulla numquam molestias eum officia maiores aliquid laborum et officiis pariatur, delectus sapiente molestiae sit accusantium a libero, eligendi vero eius laboriosam minus. Nemo quibusdam nesciunt doloribus repellendus expedita necessitatibus velit vero?</p>
+								<h3 class="tab-title">Lokasi</h3>
+								<p class="mb-3" style="font-size:17px">Alamat :</p>
+								<p style="font-size: 20px; color:black" class="mb-2">{{$bengkel->alamat}}</p>
+								<p class="mb-5" style="font-size: 20px; color:black">{{$bengkel->daerah}}, {{$bengkel->kota}}</p>
 
-							</div>
-							<div class="tab-pane fade" id="pills-sparepart" role="tabpanel" aria-labelledby="pills-sparepart-tab">
-								<h3 class="tab-title">Product Specifications</h3>
+								<h3 class="tab-title">Produk</h3>
 								<div class="row">
+								<?php $count = 0; ?>
+								@foreach($products->take(3) as $product)
 									<div class="col-md-12">
-										<div class="card">
+										<div class="card mb-4">
 											<div class="row no-gutters">
 												<div class="col-md-3">
-													<img src="https://cdn.monotaro.id/media/catalog/product/cache/6/image/b5fa40980320eb406ba395dece54e4a8/P/1/P102212226-1.jpg" class="img-fluid mx-auto d-block" alt="">
+													<img src="https://teknisimobil.com/wp-content/uploads/2019/07/Komponen-chasis-mobil.jpg" class="img-fluid mx-auto d-block" alt="">
 												</div>
 												<div class="col-md-8" style="border-left: 1px solid #aaaaaa">
 													<div class="card-block pl-3 pt-3">
-														<h4 class="card-title">Shell Helix Merah</h4>
-														<p class="card-text">Description</p>
-														<a href="#" class="btn btn-primary">BUTTON</a>
+														<h4 class="card-title">{{$product->nama_product}}</h4>
+														<h5 class="card-text" style="font-size:17px">Rp. {{ number_format($product->harga,0,',','.')}}</h5>
+														<div class="row mb-2">
+															<div class="col-md-4 col-6">
+																<p class="card-text mb-0" style="color:black">Kategori : </p>
+																<p class="card-text">{{$product->nama_kategori}}</p>
+																<p class="card-text mb-0" style="color:black">Stock : </p>
+																<p class="card-text">x{{$product->quantity}}</p>
+															</div>
+															<div class="col-md-4 col-6">
+																<p class="card-text mb-0" style="color:black">Brand : </p>
+																<p class="card-text ">{{$product->nama_brand}}</p>
+															</div>
+														</div>
+														
 													</div>
 												</div>
 											</div>
-											<div class="card-footer w-100 text-muted">
-												Footer stating cats are CUTE little animals
+										</div>
+									</div>
+								@endforeach
+								</div>
+								<div class=row>
+									<a class="nav-link" id="pills-sparepart-tab" data-toggle="pill" href="#pills-sparepart" role="tab" aria-controls="pills-sparepart" aria-selected="false">Lihat Semua</a>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="pills-sparepart" role="tabpanel" aria-labelledby="pills-sparepart-tab">
+								<h3 class="tab-title">Produk Sparepart</h3>
+								<div class="row">
+								@foreach($products as $product)
+									<div class="col-md-12">
+										<div class="card mb-4">
+											<div class="row no-gutters">
+												<div class="col-md-3">
+													<img src="https://teknisimobil.com/wp-content/uploads/2019/07/Komponen-chasis-mobil.jpg" class="img-fluid mx-auto d-block" alt="">
+												</div>
+												<div class="col-md-8" style="border-left: 1px solid #aaaaaa">
+													<div class="card-block pl-3 pt-3">
+														<h4 class="card-title">{{$product->nama_product}}</h4>
+														<h5 class="card-text" style="font-size:17px">Rp. {{ number_format($product->harga,0,',','.')}}</h5>
+														<div class="row mb-2">
+															<div class="col-md-4 col-6">
+																<p class="card-text mb-0" style="color:black">Kategori : </p>
+																<p class="card-text">{{$product->nama_kategori}}</p>
+																<p class="card-text mb-0" style="color:black">Stock : </p>
+																<p class="card-text">x{{$product->quantity}}</p>
+															</div>
+															<div class="col-md-4 col-6">
+																<p class="card-text mb-0" style="color:black">Brand : </p>
+																<p class="card-text ">{{$product->nama_brand}}</p>
+															</div>
+														</div>
+														
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
+								@endforeach
 								</div>
-								
 							</div>
 							<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
 								<h3 class="tab-title">Product Review</h3>

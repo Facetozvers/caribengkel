@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Bengkel;
 use App\BengkelSpecialties;
+use App\BengkelProduct;
 
 class BengkelController extends Controller
 {
@@ -57,7 +58,13 @@ class BengkelController extends Controller
                 $bengkel->{'specialties'. $key} = $value->nama;
             }
 
-        return view('bengkel.detail', ['bengkel' => $bengkel]);
+        $products = BengkelProduct::where('id_bengkel','=', $bengkel->id)
+                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkel_products.*')
+                    ->get();
+                    
+        return view('bengkel.detail', ['bengkel' => $bengkel, 'products' => $products]);
     }
 
     /**

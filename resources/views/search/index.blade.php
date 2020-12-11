@@ -75,27 +75,28 @@
 					<div class="row mt-30">
                         @foreach($bengkels as $bengkel)
 						<div class="col-sm-12 col-lg-4 col-md-6">
+                        <a href="/bengkel/{{$bengkel->id}}">
 							<!-- product card -->
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
-                                        <a href="">
+                                        
                                             <img class="card-img-top img-fluid product-img-small" src="https://cdn-2.tstatic.net/tribunnews/foto/bank/images/bengkel-terbesar-yamaha.jpg" alt="Card image cap">
-                                        </a>
+                                       
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="card-title"><a href="">{{$bengkel->nama_bengkel}}</a></h4>
+                                        <h4 class="card-title">{{$bengkel->nama_bengkel}}</h4>
                                         <p class="card-text mb-2"><i class="fas fa-map-marker-alt mr-1"></i>{{$bengkel->daerah}}, {{$bengkel->kota}}</p>
                                         <ul class="list-inline product-meta">
                                             <p class="mb-0">Melayani :</p>
                                             @if($bengkel->mobil == 1)
                                             <li class="list-inline-item">
-                                                <a href=""><i class="fas fa-car"></i>Mobil</a>
+                                                <i class="fas fa-car"></i>Mobil
                                             </li>
                                             @endif
                                             @if($bengkel->motor == 1)
                                             <li class="list-inline-item">
-                                                <a href=""><i class="fas fa-motorcycle"></i>Motor</a>
+                                                <i class="fas fa-motorcycle"></i>Motor
                                             </li>
                                             @endif
                                         </ul>
@@ -122,6 +123,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </a>
                         </div>
                         @endforeach
                     </div>
