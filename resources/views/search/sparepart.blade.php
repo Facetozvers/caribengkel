@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="search-result bg-gray">
-					<h2>Hasil untuk "Electronics"</h2>
+					<h2>Hasil untuk "Bengkel"</h2>
 					<p>123 Hasil
 				</div>
 			</div>
@@ -63,54 +63,42 @@
 					<div class="row">
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active">Bengkel</a>
+                                <a class="nav-link" href="/search/bengkel">Bengkel</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/search/sparepart">Sparepart</a>
+                                <a class="nav-link active">Sparepart</a>
                             </li>
                         </ul>
                     </div>
                 </div>
 				<div class="product-grid-list">
 					<div class="row mt-30">
-                        @foreach($bengkels as $bengkel)
+                        @foreach($products as $product)
 						<div class="col-sm-12 col-lg-4 col-md-6">
-                        <a href="/bengkel/{{$bengkel->id}}">
+                        <a href="/bengkel/{{$product->id_bengkel}}">
 							<!-- product card -->
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
                                         
-                                            <img class="card-img-top img-fluid product-img-small" src="https://cdn-2.tstatic.net/tribunnews/foto/bank/images/bengkel-terbesar-yamaha.jpg" alt="Card image cap">
+                                            <img class="card-img-top img-fluid product-img-small" src="https://media.astraotoshop.com/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/y/h/yh-f22a0-vgn-1700.jpg" alt="Card image cap">
                                        
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="card-title">{{$bengkel->nama_bengkel}}</h4>
-                                        <p class="card-text mb-2"><i class="fas fa-map-marker-alt mr-1"></i>{{$bengkel->daerah}}, {{$bengkel->kota}}</p>
-                                        <ul class="list-inline product-meta">
-                                            <p class="mb-0">Melayani :</p>
-                                            @if($bengkel->mobil == 1)
-                                            <li class="list-inline-item">
-                                                <i class="fas fa-car"></i>Mobil
-                                            </li>
-                                            @endif
-                                            @if($bengkel->motor == 1)
-                                            <li class="list-inline-item">
-                                                <i class="fas fa-motorcycle"></i>Motor
-                                            </li>
-                                            @endif
-                                        </ul>
-                                        <ul class="list-inline product-meta">
-                                            <p class="mb-0">Support :</p>
-                                            <p class="mb-0">
-                                                @for($i = 0;$i < 3 && $bengkel->{'specialties'.$i} != NULL; $i++)
-                                                    {{ $bengkel->{'specialties'.$i} }}, 
-                                                @endfor
-                                                @isset($bengkel->specialties3)
-                                                    and more
-                                                @endisset
-                                            </p>
-                                        </ul>
+                                        <h4 class="card-title">{{$product->nama_product}}</h4>
+                                        <h5 class="card-text" style="font-size:17px">Rp. {{ number_format($product->harga,0,',','.')}}</h5>
+                                        <div class="row mb-2">
+                                            <div class="col-md-6 col-6">
+                                                <p class="card-text mb-0" style="color:black">Kategori : </p>
+                                                <p class="card-text">{{$product->nama_kategori}}</p>
+                                                <p class="card-text mb-0" style="color:black">Stock : </p>
+                                                <p class="card-text">x{{$product->quantity}}</p>
+                                            </div>
+                                            <div class="col-md-6 col-6">
+                                                <p class="card-text mb-0" style="color:black">Brand : </p>
+                                                <p class="card-text ">{{$product->nama_brand}}</p>
+                                            </div>
+                                        </div>
                                         <div class="product-ratings">
                                             <ul class="list-inline">
                                                 <li class="list-inline-item selected"><i class="fa fa-star"></i></li>

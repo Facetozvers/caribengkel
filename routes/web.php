@@ -23,7 +23,14 @@ Auth::routes();
 Route::get('/bengkel/{id}', 'BengkelController@show');
 
 Route::get('/cari-bengkel/mobil', 'CariBengkelController@mobil');
+Route::get('/cari-bengkel/mobil/jakarta-pusat', 'CariBengkelController@daerah');
+Route::get('/cari-bengkel/mobil/jakarta-barat', 'CariBengkelController@daerah');
+Route::get('/cari-bengkel/mobil/jakarta-timur', 'CariBengkelController@daerah');
+Route::get('/cari-bengkel/mobil/jakarta-utara', 'CariBengkelController@daerah');
+Route::get('/cari-bengkel/mobil/jakarta-selatan', 'CariBengkelController@daerah');
 
-Route::get('/search', 'SearchController@index');
+
+Route::get('/search/bengkel', 'SearchController@bengkel');
+Route::get('/search/sparepart', 'SearchController@sparepart');
 
 

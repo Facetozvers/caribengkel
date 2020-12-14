@@ -8,7 +8,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/cari-bengkel/style.css">
-    <title>Cari Bengkel Mobil | caribengkel.id</title>
+    <link rel="stylesheet" href="/main/css/style.css">
+    <title>Hello, world!</title>
   </head>
   <body>
     <div class="title">
@@ -18,12 +19,19 @@
       <h5 class="text-center">Pilih Kota</h5>
     </div>
 
-    <div class="button-group">
-      <a class="btn btn-primary btn-lg btn-block btn-change" href="/cari-bengkel/mobil/jakarta-pusat">Jakarta Pusat</a>
-      <a class="btn btn-primary btn-lg btn-block btn-change" href="/cari-bengkel/mobil/jakarta-selatan">Jakarta Selatan</a>
-      <a class="btn btn-primary btn-lg btn-block btn-change" href="/cari-bengkel/mobil/jakarta-timur">Jakarta Timur</a>
-      <a class="btn btn-primary btn-lg btn-block btn-change" href="/cari-bengkel/mobil/jakarta-barat">Jakarta Barat</a>
-      <a class="btn btn-primary btn-lg btn-block btn-change" href="/cari-bengkel/mobil/jakarta-utara">Jakarta Utara</a>
+    <div class="container">
+    <div class="row">
+        @foreach($brands as $brand)
+        <div class="col-md-3">
+            <div class="card card-brand zoom mb-3">
+            <a href="/search/bengkel">
+                <img class="card-img-top brand-img" style="display:block" src="/brand-img/001-kia.png" alt="Card image cap">
+                <h1 class="m-0 mb-1" style="text-align:center">{{$brand->nama}}</h1>
+            </a>
+            </div>					
+        </div>
+        @endforeach
+    </div>
     </div>
 
     <!-- Optional JavaScript -->
