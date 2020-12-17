@@ -12,7 +12,6 @@
 			<h1 class="product-title">{{$bengkel->nama_bengkel}}</h1>
 			<div class="product-meta">
 				<ul class="list-inline">
-					<li class="list-inline-item"><i class="fa fa-user-o"></i> By <a href="">{{$bengkel->id_pemilik}}</a></li>
 					<li class="list-inline-item"><i class="fa fa-location-arrow"></i> <a href="">{{$bengkel->daerah}}, {{$bengkel->kota}}</a></li>
 				</ul>
 			</div>
@@ -106,7 +105,7 @@
 										<div class="card mb-4">
 											<div class="row no-gutters">
 												<div class="col-md-3">
-													<img src="https://teknisimobil.com/wp-content/uploads/2019/07/Komponen-chasis-mobil.jpg" class="img-fluid mx-auto d-block" alt="">
+													<img src="{{$product->picUrl}}" class="img-fluid mx-auto d-block" style="width:auto;height:200px;object-fit:cover" alt="">
 												</div>
 												<div class="col-md-8" style="border-left: 1px solid #aaaaaa">
 													<div class="card-block pl-3 pt-3">
@@ -144,7 +143,7 @@
 										<div class="card mb-4">
 											<div class="row no-gutters">
 												<div class="col-md-3">
-													<img src="https://teknisimobil.com/wp-content/uploads/2019/07/Komponen-chasis-mobil.jpg" class="img-fluid mx-auto d-block" alt="">
+													<img src="{{$product->picUrl}}" class="img-fluid" style="width:auto;height:200px;object-fit:cover" alt="">
 												</div>
 												<div class="col-md-8" style="border-left: 1px solid #aaaaaa">
 													<div class="card-block pl-3 pt-3">
@@ -316,49 +315,17 @@
 				<div class="sidebar">
 					<!-- User Profile widget -->
 					<div class="widget user">
-						<h4><a href="">Jonathon Andrew</a></h4>
-						<p class="member-time">Member Since Jun 27, 2017</p>
-						<a href="">See all ads</a>
-						<ul class="list-inline mt-20">
-							<li class="list-inline-item"><a href="" class="btn btn-contact">Contact</a></li>
-							<li class="list-inline-item"><a href="" class="btn btn-offer">Make an offer</a></li>
-						</ul>
+						<h4>{{$bengkel->nama_bengkel}}</h4>
+						<p class="member-time">Sejak {{date('d F Y', strtotime($bengkel->created_at))}}</p>
+						<p>Contact :</p>
+						<p>{{$bengkel->telp}}</p>
 					</div>
 					<!-- Map Widget -->
 					<div class="widget map">
 						<div class="map">
 							<div id="map"></div>
 						</div>
-					</div>
-					<!-- Rate Widget -->
-					<div class="widget rate">
-						<!-- Heading -->
-						<h5 class="widget-header text-center">What would you rate
-						<br>
-						this product</h5>
-						<!-- Rate -->
-						<div class="starrr"></div>
-					</div>
-					<!-- Safety tips widget -->
-					<div class="widget disclaimer">
-						<h5 class="widget-header">Safety Tips</h5>
-						<ul>
-							<li>Meet seller at a public place</li>
-							<li>Check the item before you buy</li>
-							<li>Pay only after collecting the item</li>
-							<li>Pay only after collecting the item</li>
-						</ul>
-					</div>
-					<!-- Coupon Widget -->
-					<div class="widget coupon text-center">
-						<!-- Coupon description -->
-						<p>Have a great product to post ? Share it with
-							your fellow users.
-						</p>
-						<!-- Submii button -->
-						<a href="" class="btn btn-transparent-white">Submit Listing</a>
-					</div>
-					
+					</div>	
 				</div>
 			</div>
 			

@@ -36,3 +36,6 @@ Route::get('/search/sparepart', 'SearchController@sparepart');
 Route::post('/discuss', 'DiscussionController@submitDiscussion');
 Route::post('/discuss/reply', 'DiscussionController@submitReply');
 
+//client are
+Route::get('/wishlist', 'ClientAreaController@wishlist');
+Route::get('/wish/{id_product}', 'ClientAreaController@addWishlist');

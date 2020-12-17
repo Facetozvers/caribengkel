@@ -80,9 +80,7 @@
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
-                                        
-                                            <img class="card-img-top img-fluid product-img-small" src="https://media.astraotoshop.com/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/y/h/yh-f22a0-vgn-1700.jpg" alt="Card image cap">
-                                       
+                                        <img class="card-img-top img-fluid product-img-small" src="https://media.astraotoshop.com/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/y/h/yh-f22a0-vgn-1700.jpg" alt="Card image cap">
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">{{$product->nama_product}}</h4>
@@ -108,6 +106,8 @@
                                                 <li class="list-inline-item"><i class="fa fa-star"></i></li>
                                             </ul>
                                         </div>
+                                        <hr>
+                                            <a href="/wish/{{$product->id}}" style="font-size:10px"><i class="fa fa-heart fa-2x" style="color:red"></i></a>
                                     </div>
                                 </div>
                             </div>

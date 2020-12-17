@@ -15,23 +15,36 @@
   font-weight: 200;
 }
 
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('/loginForm/fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('/loginForm/fonts/poppins/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('/loginForm/fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+
 body {
   line-height: 1.5;
-  font-family: dosis;
-  font-weight: 200;
+  font-family: Poppins-Regular;
   letter-spacing: 0.05em;
 }
 
 p, li, input, select, button {
-  font-family: dosis;
+  font-family: Poppins-Regular;
   color: #666;
   font-size: 14px;
-  font-weight: 200;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: dosis;
-  font-weight: 400;
+  font-family: Poppins-Medium;
   color: #333;
 }
 
