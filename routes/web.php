@@ -33,4 +33,6 @@ Route::get('/cari-bengkel/mobil/jakarta-selatan', 'CariBengkelController@daerah'
 Route::get('/search/bengkel', 'SearchController@bengkel');
 Route::get('/search/sparepart', 'SearchController@sparepart');
 
+Route::post('/discuss', 'DiscussionController@submitDiscussion');
+Route::post('/discuss/reply', 'DiscussionController@submitReply');
 

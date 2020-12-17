@@ -30,7 +30,7 @@
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Buat Akun</h2>
+                    <h2 class="title">Registrasi Akun</h2>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -75,6 +75,9 @@
                         </div>
                         <div>
                             <button class="btn btn--radius-2 btn--red" type="submit">Register</button>
+                        </div>
+                        <div >
+                            <p style="margin-top:20px">Sudah punya akun? <a href="/login">Login</a></p>
                         </div>
                     </form>
                 </div>

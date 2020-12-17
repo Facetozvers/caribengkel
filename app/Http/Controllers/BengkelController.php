@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Bengkel;
 use App\BengkelSpecialties;
 use App\BengkelProduct;
+use App\BengkelDiscussion;
+use App\BengkelDiscussionReply;
 
 class BengkelController extends Controller
 {
@@ -59,12 +61,22 @@ class BengkelController extends Controller
             }
 
         $products = BengkelProduct::where('id_bengkel','=', $bengkel->id)
-                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkel_products.*')
-                    ->get();
+            ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+            ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+            ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkel_products.*')
+            ->get();
                     
-        return view('bengkel.detail', ['bengkel' => $bengkel, 'products' => $products]);
+        $discussion = BengkelDiscussion::where('id_bengkel','=', $bengkel->id)
+            ->join('users', 'users.id', '=' , 'bengkel_discussions.id_user')
+            ->select('bengkel_discussions.*', 'users.name', 'users.id AS user_id')
+            ->get();
+        
+        $reply = BengkelDiscussionReply::where('id_bengkel', '=', $bengkel->id)
+            ->join('users', 'users.id', '=' , 'bengkel_discussion_replies.id_user')
+            ->select('bengkel_discussion_replies.*', 'users.name', 'users.id AS user_id')
+            ->get();
+
+        return view('bengkel.detail', ['bengkel' => $bengkel, 'products' => $products, 'discussions' => $discussion, 'replies' => $reply]);
     }
 
     /**

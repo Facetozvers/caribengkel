@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Bengkel')
+@section('title', $bengkel->nama_bengkel.' | caribengkel.id')
 @section('content')
 
 <!--===================================
@@ -62,6 +62,9 @@
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Reviews</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="pills-discuss-tab" data-toggle="pill" href="#pills-discuss" role="tab" aria-controls="pills-discuss" aria-selected="false">Diskusi</a>
 							</li>
 						</ul>
 					</div>
@@ -173,7 +176,7 @@
 								<div class="product-review">
 							  		<div class="media">
 							  			<!-- Avater -->
-							  			<img src="/main/images/user/user-thumb.jpg" alt="avater">
+							  			<img src="https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png" alt="avater">
 							  			<div class="media-body">
 							  				<!-- Ratings -->
 							  				<div class="ratings">
@@ -227,6 +230,78 @@
 						  						</div>
 						  						<div class="col-12">
 						  							<button type="submit" class="btn btn-main">Sumbit</button>
+						  						</div>
+						  					</form>
+						  				</div>
+							  		</div>
+							  	</div>
+							</div>
+							<div class="tab-pane fade" id="pills-discuss" role="tabpanel" aria-labelledby="pills-discuss-tab">
+								<h3 class="tab-title">Diskusi</h3>
+								<div class="product-review">
+									@foreach($discussions as $discuss)
+							  		<div class="media">
+							  			<!-- Avater -->
+							  			<img src="https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png" alt="avater">
+							  			<div class="media-body">
+							  				<div class="name">
+							  					<h5>{{$discuss->name}} <span class="badge badge-secondary {{$discuss->user_id == $bengkel->id_pemilik ? '' : 'hidden'}}">bengkel</span></h5>
+							  				</div>
+							  				<div class="date">
+							  					<p>{{date('d F Y', strtotime($discuss->created_at))}}</p>
+							  				</div>
+							  				<div class="review-comment">
+							  					<p>
+							  						{{$discuss->message}}	
+												</p>
+							  				</div>
+											<hr>
+											  <!-- replies -->
+											  @foreach($replies as $reply)
+											  @if($reply->id_discussion == $discuss->id)
+											<div class="media">
+												<!-- Avater -->
+												<img src="https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png" alt="avater">
+												<div class="media-body" style="background:#cdeaf2">
+													<div class="name">
+														<h5>{{$reply->name}} <span class="badge badge-secondary {{$reply->user_id == $bengkel->id_pemilik ? '' : 'hidden'}}">bengkel</span></h5>
+													</div>
+													<div class="date">
+														<p>{{date('d F Y', strtotime($reply->created_at))}}</p>
+													</div>
+													<div class="review-comment">
+														<p>
+															{{$reply->message}}
+														</p>
+													</div>
+												</div>
+											</div>
+											<!-- reply -->
+												@endif
+												@endforeach
+											<form action="/discuss/reply" method="post">
+											@csrf
+											  <input type="text" class="form-control" placeholder="Tulis komentar kamu ..." name="message"><br>
+											  <input type="hidden" value="{{$bengkel->id}}" name="id_bengkel">
+											  <input type="hidden" value="{{$discuss->id}}" name="id_discussion">
+											  <button class="btn btn-main">Reply</button>
+											</form>
+							  			</div>
+							  		</div>
+									 @endforeach
+							  		<div class="review-submission">
+							  			<h3 class="tab-title">Apa yang ingin kamu tanyakan?</h3>
+						  				<!-- new diskusi -->
+						  				<div class="review-submit">
+						  					<form action="/discuss" method="post" class="row">
+											  @csrf
+						  						<div class="col-12">
+						  							<textarea name="message" id="review" rows="5" class="form-control" placeholder="Message"></textarea>
+						  						</div>
+												  <!-- hidden -->
+												  <input type="hidden" value="{{$bengkel->id}}" name="id_bengkel">
+						  						<div class="col-12">
+						  							<button type="submit" class="btn btn-main">Submit</button>
 						  						</div>
 						  					</form>
 						  				</div>
