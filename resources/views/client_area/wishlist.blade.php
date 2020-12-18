@@ -16,11 +16,14 @@
             <div class="row mt-5">
                 @foreach($wishlists as $wish)
                 <div class="col-md-3">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card">
                         <img class="card-img-top bengkel-img" src="{{$wish->picUrl}}" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$wish->nama_product}}</h5>
-                            <p class="card-title">{{$wish->nama_bengkel}}</p>
+                        <div class="card-body" style="position:relative;height:110px">
+                            <h5 class="card-title" style="font-size:13px">{{$wish->nama_product}}</h5>
+                            <p class="card-title" style="font-size:13px">{{$wish->nama_bengkel}}</p>
+                            <div style="position:absolute;bottom: 3px;height:25px;">
+                                <a href="/unwish/{{$wish->id_product}}" class="" style="font-size:10px"><i class="fa fa-trash fa-2x" style="color:grey"></i></a>
+                            </div>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item" style="border-top:solid rgba(0,0,0,.125) 1px">Harga : Rp. {{ number_format($wish->harga,0,',','.')}}</li>

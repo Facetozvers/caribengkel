@@ -16,9 +16,9 @@
 					<h1>PORTAL BENGKEL OTOMOTIF<br>SE-JAKARTA!</h1>
 					<p>Temukan bengkel terbaik untuk mobil dan motor kamu hanya di caribengkel.id</p>
 					<!-- search bar -->
-					<form action="">
+					<form action="/search/bengkel">
 						<div class="input-group md-form form-sm form-2 pl-0 pb-2" style="width:60%;margin:auto">
-							<input class="form-control my-0 py-1 lime-border" style="background:white" type="text" placeholder="Cari bengkel, sparepart.." aria-label="Search">
+							<input class="form-control my-0 py-1 lime-border" style="background:white" name="cari" type="text" placeholder="Cari bengkel, sparepart.." aria-label="Search">
 							<div class="input-group-append">
 								<button type="submit" class="input-group-text lime lighten-2" id="basic-text1"><i class="fas fa-search text-grey" aria-hidden="true"></i></button>
 							</div>

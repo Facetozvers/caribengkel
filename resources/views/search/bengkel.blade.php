@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="search-result bg-gray">
-					<h2>Hasil untuk "Bengkel"</h2>
+					<h2>Hasil untuk "{{request()->input('cari')}}"</h2>
 					<p>123 Hasil
 				</div>
 			</div>
@@ -66,13 +66,16 @@
                                 <a class="nav-link active">Bengkel</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/search/sparepart">Sparepart</a>
+                                <a class="nav-link" href="/search/sparepart?{{parse_url(url()->full(), PHP_URL_QUERY)}}">Sparepart</a>
                             </li>
                         </ul>
                     </div>
                 </div>
 				<div class="product-grid-list">
 					<div class="row mt-30">
+                        @if(count($bengkels) == 0)
+                        <p class="mt-3 mb-5" style="text-align:center;margin:auto">Bengkel tidak ditemukan</p>
+                        @endif
                         @foreach($bengkels as $bengkel)
 						<div class="col-sm-12 col-lg-4 col-md-6">
                         <a href="/bengkel/{{$bengkel->id}}">
@@ -84,7 +87,7 @@
                                             <img class="card-img-top img-fluid product-img-small" src="https://cdn-2.tstatic.net/tribunnews/foto/bank/images/bengkel-terbesar-yamaha.jpg" alt="Card image cap">
                                        
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body" style="height:280px">
                                         <h4 class="card-title">{{$bengkel->nama_bengkel}}</h4>
                                         <p class="card-text mb-2"><i class="fas fa-map-marker-alt mr-1"></i>{{$bengkel->daerah}}, {{$bengkel->kota}}</p>
                                         <ul class="list-inline product-meta">
@@ -128,7 +131,7 @@
                         @endforeach
                     </div>
                 </div>
-				<div class="pagination justify-content-center">
+				<div class="pagination justify-content-left">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">
 							<li class="page-item">
@@ -149,6 +152,54 @@
 						</ul>
 					</nav>
 				</div>
+                <h4 class="mt-5">Sparepart Terkait</h4>
+                <div class="product-grid-list">
+					<div class="row mt-30">
+                        @foreach($products->take(6) as $product)
+						<div class="col-sm-12 col-lg-4 col-md-6">
+                        <a href="/bengkel/{{$product->id_bengkel}}">
+							<!-- product card -->
+                            <div class="product-item bg-light">
+                                <div class="card">
+                                    <div class="thumb-content">
+                                        <img class="card-img-top img-fluid product-img-small" src="https://media.astraotoshop.com/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/y/h/yh-f22a0-vgn-1700.jpg" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body" style="height:300px; position:relative">
+                                        <h4 class="card-title" style="font-size:16px">{{$product->nama_product}}</h4>
+                                        <h5 class="card-text" style="font-size:14px">Rp. {{ number_format($product->harga,0,',','.')}}</h5>
+                                        <h5 class="card-text" style="font-size:11px">By <strong>{{$product->nama_bengkel}}</strong></h5>
+                                        <div class="row mb-2" >
+                                            <div class="col-md-6 col-6">
+                                                <p class="card-text mb-0" style="color:black">Kategori : </p>
+                                                <p class="card-text">{{$product->nama_kategori}}</p>
+                                                <p class="card-text mb-0" style="color:black">Stock : </p>
+                                                <p class="card-text">x{{$product->quantity}}</p>
+                                            </div>
+                                            <div class="col-md-6 col-6">
+                                                <p class="card-text mb-0" style="color:black">Brand : </p>
+                                                <p class="card-text ">{{$product->nama_brand}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="product-ratings">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div style="position:absolute;bottom: 10px;height:25px;">
+                                            <a href="/wish/{{$product->id}}" class="" style="font-size:10px"><i class="fa fa-heart fa-2x" style="color:red"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
 			</div>
 		</div>
 	</div>

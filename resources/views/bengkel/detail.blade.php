@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.wsearch')
 @section('title', $bengkel->nama_bengkel.' | caribengkel.id')
 @section('content')
 
@@ -104,7 +104,7 @@
 									<div class="col-md-12">
 										<div class="card mb-4">
 											<div class="row no-gutters">
-												<div class="col-md-3">
+												<div class="col-md-4">
 													<img src="{{$product->picUrl}}" class="img-fluid mx-auto d-block" style="width:auto;height:200px;object-fit:cover" alt="">
 												</div>
 												<div class="col-md-8" style="border-left: 1px solid #aaaaaa">
@@ -142,12 +142,12 @@
 									<div class="col-md-12">
 										<div class="card mb-4">
 											<div class="row no-gutters">
-												<div class="col-md-3">
+												<div class="col-md-4">
 													<img src="{{$product->picUrl}}" class="img-fluid" style="width:auto;height:200px;object-fit:cover" alt="">
 												</div>
 												<div class="col-md-8" style="border-left: 1px solid #aaaaaa">
 													<div class="card-block pl-3 pt-3">
-														<h4 class="card-title">{{$product->nama_product}}</h4>
+														<h4 class="card-title d-inline">{{$product->nama_product}}</h4>
 														<h5 class="card-text" style="font-size:17px">Rp. {{ number_format($product->harga,0,',','.')}}</h5>
 														<div class="row mb-2">
 															<div class="col-md-4 col-6">
@@ -161,6 +161,7 @@
 																<p class="card-text ">{{$product->nama_brand}}</p>
 															</div>
 														</div>
+															<a href="/wish/{{$product->id}}" style=color:red><i class="fa fa-heart" style="text-align:right"></i></a>
 														
 													</div>
 												</div>
@@ -318,7 +319,7 @@
 						<h4>{{$bengkel->nama_bengkel}}</h4>
 						<p class="member-time">Sejak {{date('d F Y', strtotime($bengkel->created_at))}}</p>
 						<p>Contact :</p>
-						<p>{{$bengkel->telp}}</p>
+						<p><i class="fa fa-phone"></i>  {{$bengkel->telp}}</p>
 					</div>
 					<!-- Map Widget -->
 					<div class="widget map">

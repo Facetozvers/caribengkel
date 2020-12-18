@@ -33,9 +33,10 @@ Route::get('/cari-bengkel/mobil/jakarta-selatan', 'CariBengkelController@daerah'
 Route::get('/search/bengkel', 'SearchController@bengkel');
 Route::get('/search/sparepart', 'SearchController@sparepart');
 
-Route::post('/discuss', 'DiscussionController@submitDiscussion');
-Route::post('/discuss/reply', 'DiscussionController@submitReply');
+Route::post('/discuss', 'DiscussionController@submitDiscussion')->middleware('auth');
+Route::post('/discuss/reply', 'DiscussionController@submitReply')->middleware('auth');
 
 //client are
-Route::get('/wishlist', 'ClientAreaController@wishlist');
-Route::get('/wish/{id_product}', 'ClientAreaController@addWishlist');
+Route::get('/wishlist', 'ClientAreaController@wishlist')->middleware('auth');
+Route::get('/wish/{id_product}', 'ClientAreaController@addWishlist')->middleware('auth');
+Route::get('/unwish/{id_product}', 'ClientAreaController@deleteWishlist')->middleware('auth');

@@ -63,7 +63,7 @@
 					<div class="row">
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a class="nav-link" href="/search/bengkel">Bengkel</a>
+                                <a class="nav-link" href="/search/bengkel?{{parse_url(url()->full(), PHP_URL_QUERY)}}">Bengkel</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active">Sparepart</a>
@@ -82,10 +82,11 @@
                                     <div class="thumb-content">
                                         <img class="card-img-top img-fluid product-img-small" src="https://media.astraotoshop.com/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/y/h/yh-f22a0-vgn-1700.jpg" alt="Card image cap">
                                     </div>
-                                    <div class="card-body">
-                                        <h4 class="card-title">{{$product->nama_product}}</h4>
-                                        <h5 class="card-text" style="font-size:17px">Rp. {{ number_format($product->harga,0,',','.')}}</h5>
-                                        <div class="row mb-2">
+                                    <div class="card-body" style="height:300px; position:relative">
+                                        <h4 class="card-title" style="font-size:16px">{{$product->nama_product}}</h4>
+                                        <h5 class="card-text" style="font-size:14px">Rp. {{ number_format($product->harga,0,',','.')}}</h5>
+                                        <h5 class="card-text" style="font-size:11px">By <strong>{{$product->nama_bengkel}}</strong></h5>
+                                        <div class="row mb-2" >
                                             <div class="col-md-6 col-6">
                                                 <p class="card-text mb-0" style="color:black">Kategori : </p>
                                                 <p class="card-text">{{$product->nama_kategori}}</p>
@@ -106,8 +107,9 @@
                                                 <li class="list-inline-item"><i class="fa fa-star"></i></li>
                                             </ul>
                                         </div>
-                                        <hr>
-                                            <a href="/wish/{{$product->id}}" style="font-size:10px"><i class="fa fa-heart fa-2x" style="color:red"></i></a>
+                                        <div style="position:absolute;bottom: 10px;height:25px;">
+                                            <a href="/wish/{{$product->id}}" class="" style="font-size:10px"><i class="fa fa-heart fa-2x" style="color:red"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

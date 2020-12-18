@@ -44,9 +44,9 @@
                             <span class="dark-blue-text"><i class="fas fa-bars fa-1x"></i></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <form class="ml-auto">
+                            <form class="ml-auto" action="/search/bengkel" method="get">
                                 <div class="input-group">
-                                    <input class="form-control search-bar-nav " style="background:white" type="text" placeholder="Cari bengkel, sparepart.." aria-label="Search">
+                                    <input class="form-control search-bar-nav" name="cari" style="background:white" type="text" placeholder="Cari bengkel, sparepart.." aria-label="Search">
                                     <div class="input-group-append">
                                         <button type="submit" class="input-group-text lime lighten-2" id="basic-text1"><i class="fas fa-search text-grey" aria-hidden="true"></i></button>
                                     </div>
@@ -69,6 +69,8 @@
                                     </a>
                                     <!-- Dropdown list -->
                                     <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="/wishlist">Wishlist</a>
+                                        <a class="dropdown-item" href="/bengkel-favorit">Bengkel Favorit</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                           onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
@@ -93,60 +95,6 @@
 =            Footer            =
 =============================-->
 
-<footer class="footer section section-sm">
-  <!-- Container Start -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3 col-md-7 offset-md-1 offset-lg-0">
-        <!-- About -->
-        <div class="block about">
-          <!-- footer logo -->
-          <img src="/main/images/logo-footer.png" alt="">
-          <!-- description -->
-          <p class="alt-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-      </div>
-      <!-- Link list -->
-      <div class="col-lg-2 offset-lg-1 col-md-3">
-        <div class="block">
-          <h4>Site Pages</h4>
-          <ul>
-            <li><a href="#">Boston</a></li>
-            <li><a href="#">How It works</a></li>
-            <li><a href="#">Deals & Coupons</a></li>
-            <li><a href="#">Articls & Tips</a></li>
-            <li><a href="#">Terms of Services</a></li>
-          </ul>
-        </div>
-      </div>
-      <!-- Link list -->
-      <div class="col-lg-2 col-md-3 offset-md-1 offset-lg-0">
-        <div class="block">
-          <h4>Admin Pages</h4>
-          <ul>
-            <li><a href="#">Boston</a></li>
-            <li><a href="#">How It works</a></li>
-            <li><a href="#">Deals & Coupons</a></li>
-            <li><a href="#">Articls & Tips</a></li>
-            <li><a href="#">Terms of Services</a></li>
-          </ul>
-        </div>
-      </div>
-      <!-- Promotion -->
-      <div class="col-lg-4 col-md-7">
-        <!-- App promotion -->
-        <div class="block-2 app-promotion">
-          <a href="">
-            <!-- Icon -->
-            <img src="/main/images/footer/phone-icon.png" alt="mobile-icon">
-          </a>
-          <p>Get the Dealsy Mobile App and Save more</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Container End -->
-</footer>
 <!-- Footer Bottom -->
 <footer class="footer-bottom">
     <!-- Container Start -->
@@ -155,7 +103,7 @@
         <div class="col-sm-6 col-12">
           <!-- Copyright -->
           <div class="copyright">
-            <p>Copyright © 2016. All Rights Reserved</p>
+            <p>Copyright © 2020. caribengkel.id All Rights Reserved</p>
           </div>
         </div>
         <div class="col-sm-6 col-12">
@@ -170,10 +118,7 @@
       </div>
     </div>
     <!-- Container End -->
-    <!-- To Top -->
-    <div class="top-to">
-      <a id="top" class="" href=""><i class="fa fa-angle-up"></i></a>
-    </div>
+    
 </footer>
 <!-- JAVASCRIPTS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -185,6 +130,13 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
 <script src="/main/js/scripts.js"></script>
 <script src="/search-box/js/extention/choices.js"></script>
+<script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+      alert(msg);
+    }
+  </script>
 
 </body>
 

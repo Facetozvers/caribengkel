@@ -61,6 +61,8 @@
                                     </a>
                                     <!-- Dropdown list -->
                                     <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="/wishlist">Wishlist</a>
+                                        <a class="dropdown-item" href="/bengkel-favorit">Bengkel Favorit</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                           onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">

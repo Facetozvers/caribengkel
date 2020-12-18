@@ -37,7 +37,16 @@ class ClientAreaController extends Controller
 
         $wishlist->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('alert', 'Berhasil menambahkan wishlist!');
 
+    }
+
+    public function deleteWishlist($id_product){
+        $wishlist = UserWishlist::where('id_product', '=', $id_product)
+        ->where('id_user', '=', Auth::id())->first();
+
+        $wishlist->delete();
+
+        return redirect('/wishlist')->with('alert', 'Berhasil menghapus wishlist!');
     }
 }
