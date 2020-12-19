@@ -44,7 +44,7 @@
                             <span class="dark-blue-text"><i class="fas fa-bars fa-1x"></i></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <form class="ml-auto" action="/search/bengkel" method="get">
+                            <form class="ml-auto" action="" method="get">
                                 <div class="input-group">
                                     <input class="form-control search-bar-nav" name="cari" style="background:white" type="text" placeholder="Cari bengkel, sparepart.." aria-label="Search">
                                     <div class="input-group-append">

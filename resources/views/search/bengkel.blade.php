@@ -8,7 +8,7 @@
 			<div class="col-md-12">
 				<div class="search-result bg-gray">
 					<h2>Hasil untuk "{{request()->input('cari')}}"</h2>
-					<p>123 Hasil
+					<p>{{count($bengkels)}} Hasil
 				</div>
 			</div>
 		</div>
@@ -18,30 +18,30 @@
 					<div class="widget category-list">
                         <h4 class="widget-header">Kendaraan</h4>
                         <ul class="category-list">
-                            <li><a href="category.html">Mobil <span>93</span></a></li>
-                            <li><a href="category.html">Motor <span>233</span></a></li>
+                            <li><a href="{{request()->fullUrlWithQuery(['kendaraan' => 'mobil'])}}">Mobil</a></li>
+                            <li><a href="{{request()->fullUrlWithQuery(['kendaraan' => 'motor'])}}">Motor</a></li>
                         </ul>
                     </div>
 
                     <div class="widget category-list">
                         <h4 class="widget-header">Lokasi</h4>
                         <ul class="category-list">
-                            <li><a href="category.html">Jakarta Pusat <span>93</span></a></li>
-                            <li><a href="category.html">Jakarta Barat <span>233</span></a></li>
-                            <li><a href="category.html">Jakarta Utara <span>183</span></a></li>
-                            <li><a href="category.html">Jakarta Selatan <span>120</span></a></li>
-                            <li><a href="category.html">Jakarta Timur <span>40</span></a></li>
+                            <li><a href="/search/bengkel/jakarta-pusat?{{parse_url(url()->full(), PHP_URL_QUERY)}}">Jakarta Pusat </a></li>
+                            <li><a href="/search/bengkel/jakarta-barat?{{parse_url(url()->full(), PHP_URL_QUERY)}}">Jakarta Barat </a></li>
+                            <li><a href="/search/bengkel/jakarta-utara?{{parse_url(url()->full(), PHP_URL_QUERY)}}">Jakarta Utara </a></li>
+                            <li><a href="/search/bengkel/jakarta-selatan?{{parse_url(url()->full(), PHP_URL_QUERY)}}">Jakarta Selatan </a></li>
+                            <li><a href="/search/bengkel/jakarta-timur?{{parse_url(url()->full(), PHP_URL_QUERY)}}">Jakarta Timur </a></li>
                         </ul>
                     </div>
 
                     <div class="widget category-list">
                         <h4 class="widget-header">Supported Brand</h4>
                         <ul class="category-list">
-                            <li><a href="category.html">Honda <span>93</span></a></li>
-                            <li><a href="category.html">Yamaha <span>233</span></a></li>
-                            <li><a href="category.html">Suzuki <span>183</span></a></li>
-                            <li><a href="category.html">BMW <span>120</span></a></li>
-                            <li><a href="category.html">Toyota <span>40</span></a></li>
+                            <li><a href="category.html">Honda</a></li>
+                            <li><a href="category.html">Yamaha</a></li>
+                            <li><a href="category.html">Suzuki</a></li>
+                            <li><a href="category.html">BMW</a></li>
+                            <li><a href="category.html">Toyota</a></li>
                         </ul>
                     </div>
 				</div>
