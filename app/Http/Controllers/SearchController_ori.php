@@ -15,17 +15,20 @@ class SearchController extends Controller
         $cari = $request->cari;
         if(isset($request->brand)){ //kalau ada nama brand
             $brand = Brand::where('nama','like', '%' . $request->brand . '%')->first();
-            if(isset($request->kendaraan)){
-                if($request->kendaraan == 'mobil'){
-                    $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                        ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                        ->where('mobil', '=' , '1')
+            $bengkelWBrand = BengkelSpecialties::where('id_brand', $brand->id)->get();
+            
+            foreach($bengkelWBrand as $b){
+                if(isset($request->kendaraan)){
+                    if($request->kendaraan == 'mobil'){
+                        $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
+                        ->where('mobil', '=', '1')
                         ->where(function ($query) use ($cari){
-                            $query->where('nama_bengkel','like', '%' . $cari . '%')
-                            ->orWhere('kota','like', '%' . $cari . '%')
-                            ->orWhere('alamat','like', '%' . $cari . '%')
-                            ->orWhere('daerah','like', '%' . $cari . '%');
-                            })
+                        $query->where('nama_bengkel','like', '%' . $cari . '%')
+                        ->orWhere('kota','like', '%' . $cari . '%')
+                        ->orWhere('alamat','like', '%' . $cari . '%')
+                        ->orWhere('daerah','like', '%' . $cari . '%');
+                        })
+
                         ->get();
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -36,28 +39,58 @@ class SearchController extends Controller
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
                         }
-    
+        
                         $products = DB::table('bengkel_products')
-                        ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                        ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                        ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                        ->where('nama_product','like', '%' . $request->cari . '%')
-                        ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                        ->get();
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
+                    }
 
+                    else{
+                        $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
+                        ->where('motor', '=', '1')
+                        ->where(function ($query) use ($cari){
+                        $query->where('nama_bengkel','like', '%' . $cari . '%')
+                        ->orWhere('kota','like', '%' . $cari . '%')
+                        ->orWhere('alamat','like', '%' . $cari . '%')
+                        ->orWhere('daerah','like', '%' . $cari . '%');
+                        })
+
+                        ->get();
+                        foreach($bengkels as $bengkel){
+                            $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
+                            ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
+                            ->select('brands.nama')
+                            ->get();
+                            foreach($specialities as $key => $value){
+                                $bengkel->{'specialties'. $key} = $value->nama;
+                            }
+                        }
+        
+                        $products = DB::table('bengkel_products')
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
+                    }
                 }
 
                 else{
-                    $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                        ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                        ->where('motor', '=' , '1')
+                    
+                    $bengkels = Bengkel::where('id', $b->id_bengkel)
                         ->where(function ($query) use ($cari){
                             $query->where('nama_bengkel','like', '%' . $cari . '%')
                             ->orWhere('kota','like', '%' . $cari . '%')
                             ->orWhere('alamat','like', '%' . $cari . '%')
                             ->orWhere('daerah','like', '%' . $cari . '%');
-                            })
+                        })
                         ->get();
+                        
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                             ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -67,7 +100,9 @@ class SearchController extends Controller
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
                         }
-    
+                        
+                        
+                        
                         $products = DB::table('bengkel_products')
                         ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
                         ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
@@ -78,35 +113,6 @@ class SearchController extends Controller
                 }
                     
 
-            }
-
-            else{
-                $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                    ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                    ->where(function ($query) use ($cari){
-                        $query->where('nama_bengkel','like', '%' . $cari . '%')
-                        ->orWhere('kota','like', '%' . $cari . '%')
-                        ->orWhere('alamat','like', '%' . $cari . '%')
-                        ->orWhere('daerah','like', '%' . $cari . '%');
-                        })
-                    ->get();
-                    foreach($bengkels as $bengkel){
-                        $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
-                        ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
-                        ->select('brands.nama')
-                        ->get();
-                        foreach($specialities as $key => $value){
-                            $bengkel->{'specialties'. $key} = $value->nama;
-                        }
-                    }
-
-                    $products = DB::table('bengkel_products')
-                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                    ->where('nama_product','like', '%' . $request->cari . '%')
-                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                    ->get();
             }
             
         }
@@ -205,13 +211,14 @@ class SearchController extends Controller
         $cari = $request->cari;
         if(isset($request->brand)){ //kalau ada nama brand
             $brand = Brand::where('nama','like', '%' . $request->brand . '%')->first();
-            if(isset($request->kendaraan)){
-                if($request->kendaraan == 'mobil'){
-                    $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                        ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                        ->where('mobil', '=' , '1')
+            $bengkelWBrand = BengkelSpecialties::where('id_brand', $brand->id)->get();
+            foreach($bengkelWBrand as $b){
+                if(isset($request->kendaraan)){
+                    if($request->kendaraan == 'mobil'){
+                        $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
                         ->where('kota', '=' , 'Jakarta Timur')
-                        ->where('nama_bengkel','like', '%' . $cari . '%')
+                        ->where('mobil', '=', '1')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
                         ->get();
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -222,23 +229,46 @@ class SearchController extends Controller
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
                         }
-    
+        
                         $products = DB::table('bengkel_products')
-                        ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                        ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                        ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                        ->where('nama_product','like', '%' . $request->cari . '%')
-                        ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                        ->get();
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
+                    }
 
+                    else if($request->kendaraan == 'motor'){
+                        $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
+                        ->where('kota', '=' , 'Jakarta Timur')
+                        ->where('motor', '=', '1')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
+                        ->get();
+                        foreach($bengkels as $bengkel){
+                            $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
+                            ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
+                            ->select('brands.nama')
+                            ->get();
+                            foreach($specialities as $key => $value){
+                                $bengkel->{'specialties'. $key} = $value->nama;
+                            }
+                        }
+        
+                        $products = DB::table('bengkel_products')
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
+                    }
                 }
 
                 else{
-                    $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                        ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                        ->where('motor', '=' , '1')
+                    $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
                         ->where('kota', '=' , 'Jakarta Timur')
-                        ->where('nama_bengkel','like', '%' . $cari . '%')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
                         ->get();
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -249,42 +279,17 @@ class SearchController extends Controller
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
                         }
-    
+        
                         $products = DB::table('bengkel_products')
-                        ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                        ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                        ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                        ->where('nama_product','like', '%' . $request->cari . '%')
-                        ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                        ->get();
-                }
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
                     
+                }
 
-            }
-
-            else{
-                $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                    ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                    ->where('kota', '=' , 'Jakarta Timur')
-                    ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
-                    foreach($bengkels as $bengkel){
-                        $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
-                        ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
-                        ->select('brands.nama')
-                        ->get();
-                        foreach($specialities as $key => $value){
-                            $bengkel->{'specialties'. $key} = $value->nama;
-                        }
-                    }
-
-                    $products = DB::table('bengkel_products')
-                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                    ->where('nama_product','like', '%' . $request->cari . '%')
-                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                    ->get();
             }
             
         }
@@ -377,13 +382,14 @@ class SearchController extends Controller
         $cari = $request->cari;
         if(isset($request->brand)){ //kalau ada nama brand
             $brand = Brand::where('nama','like', '%' . $request->brand . '%')->first();
-            if(isset($request->kendaraan)){
-                if($request->kendaraan == 'mobil'){
-                    $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                        ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                        ->where('mobil', '=' , '1')
+            $bengkelWBrand = BengkelSpecialties::where('id_brand', $brand->id)->get();
+            foreach($bengkelWBrand as $b){
+                if(isset($request->kendaraan)){
+                    if($request->kendaraan == 'mobil'){
+                        $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
                         ->where('kota', '=' , 'Jakarta Pusat')
-                        ->where('nama_bengkel','like', '%' . $cari . '%')
+                        ->where('mobil', '=', '1')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
                         ->get();
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -394,23 +400,46 @@ class SearchController extends Controller
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
                         }
-    
+        
                         $products = DB::table('bengkel_products')
-                        ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                        ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                        ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                        ->where('nama_product','like', '%' . $request->cari . '%')
-                        ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                        ->get();
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
+                    }
 
+                    else if($request->kendaraan == 'motor'){
+                        $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
+                        ->where('kota', '=' , 'Jakarta Pusat')
+                        ->where('motor', '=', '1')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
+                        ->get();
+                        foreach($bengkels as $bengkel){
+                            $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
+                            ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
+                            ->select('brands.nama')
+                            ->get();
+                            foreach($specialities as $key => $value){
+                                $bengkel->{'specialties'. $key} = $value->nama;
+                            }
+                        }
+        
+                        $products = DB::table('bengkel_products')
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
+                    }
                 }
 
                 else{
-                    $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                        ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                        ->where('motor', '=' , '1')
+                    $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
                         ->where('kota', '=' , 'Jakarta Pusat')
-                        ->where('nama_bengkel','like', '%' . $cari . '%')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
                         ->get();
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -421,42 +450,17 @@ class SearchController extends Controller
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
                         }
-    
+        
                         $products = DB::table('bengkel_products')
-                        ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                        ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                        ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                        ->where('nama_product','like', '%' . $request->cari . '%')
-                        ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                        ->get();
-                }
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
                     
+                }
 
-            }
-
-            else{
-                $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                    ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                    ->where('kota', '=' , 'Jakarta Pusat')
-                    ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
-                    foreach($bengkels as $bengkel){
-                        $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
-                        ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
-                        ->select('brands.nama')
-                        ->get();
-                        foreach($specialities as $key => $value){
-                            $bengkel->{'specialties'. $key} = $value->nama;
-                        }
-                    }
-
-                    $products = DB::table('bengkel_products')
-                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                    ->where('nama_product','like', '%' . $request->cari . '%')
-                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                    ->get();
             }
             
         }
@@ -549,13 +553,14 @@ class SearchController extends Controller
         $cari = $request->cari;
         if(isset($request->brand)){ //kalau ada nama brand
             $brand = Brand::where('nama','like', '%' . $request->brand . '%')->first();
-            if(isset($request->kendaraan)){
-                if($request->kendaraan == 'mobil'){
-                    $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                        ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                        ->where('mobil', '=' , '1')
+            $bengkelWBrand = BengkelSpecialties::where('id_brand', $brand->id)->get();
+            foreach($bengkelWBrand as $b){
+                if(isset($request->kendaraan)){
+                    if($request->kendaraan == 'mobil'){
+                        $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
                         ->where('kota', '=' , 'Jakarta Selatan')
-                        ->where('nama_bengkel','like', '%' . $cari . '%')
+                        ->where('mobil', '=', '1')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
                         ->get();
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -566,23 +571,46 @@ class SearchController extends Controller
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
                         }
-    
+        
                         $products = DB::table('bengkel_products')
-                        ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                        ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                        ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                        ->where('nama_product','like', '%' . $request->cari . '%')
-                        ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                        ->get();
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
+                    }
 
+                    else if($request->kendaraan == 'motor'){
+                        $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
+                        ->where('kota', '=' , 'Jakarta Selatan')
+                        ->where('motor', '=', '1')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
+                        ->get();
+                        foreach($bengkels as $bengkel){
+                            $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
+                            ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
+                            ->select('brands.nama')
+                            ->get();
+                            foreach($specialities as $key => $value){
+                                $bengkel->{'specialties'. $key} = $value->nama;
+                            }
+                        }
+        
+                        $products = DB::table('bengkel_products')
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
+                    }
                 }
 
                 else{
-                    $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                        ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                        ->where('motor', '=' , '1')
+                    $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
                         ->where('kota', '=' , 'Jakarta Selatan')
-                        ->where('nama_bengkel','like', '%' . $cari . '%')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
                         ->get();
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -593,42 +621,17 @@ class SearchController extends Controller
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
                         }
-    
+        
                         $products = DB::table('bengkel_products')
-                        ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                        ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                        ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                        ->where('nama_product','like', '%' . $request->cari . '%')
-                        ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                        ->get();
-                }
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
                     
+                }
 
-            }
-
-            else{
-                $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                    ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                    ->where('kota', '=' , 'Jakarta Selatan')
-                    ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
-                    foreach($bengkels as $bengkel){
-                        $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
-                        ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
-                        ->select('brands.nama')
-                        ->get();
-                        foreach($specialities as $key => $value){
-                            $bengkel->{'specialties'. $key} = $value->nama;
-                        }
-                    }
-
-                    $products = DB::table('bengkel_products')
-                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                    ->where('nama_product','like', '%' . $request->cari . '%')
-                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                    ->get();
             }
             
         }
@@ -721,13 +724,14 @@ class SearchController extends Controller
         $cari = $request->cari;
         if(isset($request->brand)){ //kalau ada nama brand
             $brand = Brand::where('nama','like', '%' . $request->brand . '%')->first();
-            if(isset($request->kendaraan)){
-                if($request->kendaraan == 'mobil'){
-                    $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                        ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                        ->where('mobil', '=' , '1')
+            $bengkelWBrand = BengkelSpecialties::where('id_brand', $brand->id)->get();
+            foreach($bengkelWBrand as $b){
+                if(isset($request->kendaraan)){
+                    if($request->kendaraan == 'mobil'){
+                        $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
                         ->where('kota', '=' , 'Jakarta Barat')
-                        ->where('nama_bengkel','like', '%' . $cari . '%')
+                        ->where('mobil', '=', '1')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
                         ->get();
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -738,23 +742,46 @@ class SearchController extends Controller
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
                         }
-    
+        
                         $products = DB::table('bengkel_products')
-                        ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                        ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                        ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                        ->where('nama_product','like', '%' . $request->cari . '%')
-                        ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                        ->get();
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
+                    }
 
+                    else if($request->kendaraan == 'motor'){
+                        $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
+                        ->where('kota', '=' , 'Jakarta Barat')
+                        ->where('motor', '=', '1')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
+                        ->get();
+                        foreach($bengkels as $bengkel){
+                            $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
+                            ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
+                            ->select('brands.nama')
+                            ->get();
+                            foreach($specialities as $key => $value){
+                                $bengkel->{'specialties'. $key} = $value->nama;
+                            }
+                        }
+        
+                        $products = DB::table('bengkel_products')
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
+                    }
                 }
 
                 else{
-                    $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                        ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                        ->where('motor', '=' , '1')
+                    $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
                         ->where('kota', '=' , 'Jakarta Barat')
-                        ->where('nama_bengkel','like', '%' . $cari . '%')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
                         ->get();
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -765,42 +792,17 @@ class SearchController extends Controller
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
                         }
-    
+        
                         $products = DB::table('bengkel_products')
-                        ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                        ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                        ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                        ->where('nama_product','like', '%' . $request->cari . '%')
-                        ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                        ->get();
-                }
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
                     
+                }
 
-            }
-
-            else{
-                $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                    ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                    ->where('kota', '=' , 'Jakarta Barat')
-                    ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
-                    foreach($bengkels as $bengkel){
-                        $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
-                        ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
-                        ->select('brands.nama')
-                        ->get();
-                        foreach($specialities as $key => $value){
-                            $bengkel->{'specialties'. $key} = $value->nama;
-                        }
-                    }
-
-                    $products = DB::table('bengkel_products')
-                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                    ->where('nama_product','like', '%' . $request->cari . '%')
-                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                    ->get();
             }
             
         }
@@ -893,13 +895,14 @@ class SearchController extends Controller
         $cari = $request->cari;
         if(isset($request->brand)){ //kalau ada nama brand
             $brand = Brand::where('nama','like', '%' . $request->brand . '%')->first();
-            if(isset($request->kendaraan)){
-                if($request->kendaraan == 'mobil'){
-                    $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                        ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                        ->where('mobil', '=' , '1')
+            $bengkelWBrand = BengkelSpecialties::where('id_brand', $brand->id)->get();
+            foreach($bengkelWBrand as $b){
+                if(isset($request->kendaraan)){
+                    if($request->kendaraan == 'mobil'){
+                        $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
                         ->where('kota', '=' , 'Jakarta Utara')
-                        ->where('nama_bengkel','like', '%' . $cari . '%')
+                        ->where('mobil', '=', '1')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
                         ->get();
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -910,23 +913,46 @@ class SearchController extends Controller
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
                         }
-    
+        
                         $products = DB::table('bengkel_products')
-                        ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                        ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                        ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                        ->where('nama_product','like', '%' . $request->cari . '%')
-                        ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                        ->get();
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
+                    }
 
+                    else if($request->kendaraan == 'motor'){
+                        $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
+                        ->where('kota', '=' , 'Jakarta Utara')
+                        ->where('motor', '=', '1')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
+                        ->get();
+                        foreach($bengkels as $bengkel){
+                            $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
+                            ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
+                            ->select('brands.nama')
+                            ->get();
+                            foreach($specialities as $key => $value){
+                                $bengkel->{'specialties'. $key} = $value->nama;
+                            }
+                        }
+        
+                        $products = DB::table('bengkel_products')
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
+                    }
                 }
 
                 else{
-                    $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                        ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                        ->where('motor', '=' , '1')
+                    $bengkels = Bengkel::where('id', '=', $b->id_bengkel)
                         ->where('kota', '=' , 'Jakarta Utara')
-                        ->where('nama_bengkel','like', '%' . $cari . '%')
+                        ->where('nama_bengkel','like', '%' . $request->cari . '%')
                         ->get();
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -937,42 +963,17 @@ class SearchController extends Controller
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
                         }
-    
+        
                         $products = DB::table('bengkel_products')
-                        ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                        ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                        ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                        ->where('nama_product','like', '%' . $request->cari . '%')
-                        ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                        ->get();
-                }
+                                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                                    ->where('nama_product','like', '%' . $request->cari . '%')
+                                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                                    ->get();
                     
+                }
 
-            }
-
-            else{
-                $bengkels = BengkelSpecialties::where('id_brand', $brand->id)
-                    ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
-                    ->where('kota', '=' , 'Jakarta Utara')
-                    ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
-                    foreach($bengkels as $bengkel){
-                        $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
-                        ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
-                        ->select('brands.nama')
-                        ->get();
-                        foreach($specialities as $key => $value){
-                            $bengkel->{'specialties'. $key} = $value->nama;
-                        }
-                    }
-
-                    $products = DB::table('bengkel_products')
-                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                    ->where('nama_product','like', '%' . $request->cari . '%')
-                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                    ->get();
             }
             
         }

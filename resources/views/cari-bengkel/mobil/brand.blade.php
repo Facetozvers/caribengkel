@@ -16,7 +16,7 @@
       <h1 class="text-center">Cari Bengkel Mobil</h1>
     </div>
     <div class="subtitle">
-      <h5 class="text-center">Pilih Kota</h5>
+      <h5 class="text-center">Pilih Brand</h5>
     </div>
 
     <div class="container">
@@ -24,8 +24,8 @@
         @foreach($brands as $brand)
         <div class="col-md-3">
             <div class="card card-brand zoom mb-3">
-            <a href="/search/bengkel">
-                <img class="card-img-top brand-img" style="display:block" src="/brand-img/001-kia.png" alt="Card image cap">
+            <a href="/search/bengkel/{{request()->segment(count(request()->segments()))}}?brand={{$brand->nama}}">
+                <img class="card-img-top brand-img" style="display:block" src="/brand-img/kia.png" alt="Card image cap">
                 <h1 class="m-0 mb-1" style="text-align:center">{{$brand->nama}}</h1>
             </a>
             </div>					
