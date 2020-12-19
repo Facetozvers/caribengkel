@@ -12,6 +12,7 @@ use App\Brand;
 class SearchController extends Controller
 {
     public function bengkel(Request $request){
+        $supp = Brand::all();
         $cari = $request->cari;
         if(isset($request->brand)){ //kalau ada nama brand
             $brand = Brand::where('nama','like', '%' . $request->brand . '%')->first();
@@ -198,10 +199,11 @@ class SearchController extends Controller
             }
         }
 
-        return view('search.bengkel', ['bengkels' => $bengkels, 'products' => $products]);
+        return view('search.bengkel', ['bengkels' => $bengkels, 'products' => $products, 'supp' => $supp]);
     }
 
     public function bengkelJaktim(Request $request){
+        $supp = Brand::all();
         $cari = $request->cari;
         if(isset($request->brand)){ //kalau ada nama brand
             $brand = Brand::where('nama','like', '%' . $request->brand . '%')->first();
@@ -370,10 +372,11 @@ class SearchController extends Controller
         }
         
         
-        return view('search.bengkel', ['bengkels' => $bengkels, 'products' => $products]);
+        return view('search.bengkel', ['bengkels' => $bengkels, 'products' => $products, 'supp' => $supp]);
     }
 
     public function bengkelJakpus(Request $request){
+        $supp = Brand::all();
         $cari = $request->cari;
         if(isset($request->brand)){ //kalau ada nama brand
             $brand = Brand::where('nama','like', '%' . $request->brand . '%')->first();
@@ -542,10 +545,11 @@ class SearchController extends Controller
         }
         
         
-        return view('search.bengkel', ['bengkels' => $bengkels, 'products' => $products]);
+        return view('search.bengkel', ['bengkels' => $bengkels, 'products' => $products, 'supp' => $supp]);
     }
 
     public function bengkelJaksel(Request $request){
+        $supp = Brand::all();
         $cari = $request->cari;
         if(isset($request->brand)){ //kalau ada nama brand
             $brand = Brand::where('nama','like', '%' . $request->brand . '%')->first();
@@ -714,10 +718,11 @@ class SearchController extends Controller
         }
         
         
-        return view('search.bengkel', ['bengkels' => $bengkels, 'products' => $products]);
+        return view('search.bengkel', ['bengkels' => $bengkels, 'products' => $products, 'supp' => $supp]);
     }
 
     public function bengkelJakbar(Request $request){
+        $supp = Brand::all();
         $cari = $request->cari;
         if(isset($request->brand)){ //kalau ada nama brand
             $brand = Brand::where('nama','like', '%' . $request->brand . '%')->first();
@@ -886,10 +891,11 @@ class SearchController extends Controller
         }
         
         
-        return view('search.bengkel', ['bengkels' => $bengkels, 'products' => $products]);
+        return view('search.bengkel', ['bengkels' => $bengkels, 'products' => $products, 'supp' => $supp]);
     }
 
     public function bengkelJakut(Request $request){
+        $supp = Brand::all();
         $cari = $request->cari;
         if(isset($request->brand)){ //kalau ada nama brand
             $brand = Brand::where('nama','like', '%' . $request->brand . '%')->first();
@@ -1058,22 +1064,56 @@ class SearchController extends Controller
         }
         
         
-        return view('search.bengkel', ['bengkels' => $bengkels, 'products' => $products]);
+        return view('search.bengkel', ['bengkels' => $bengkels, 'products' => $products, 'supp' => $supp]);
     }
 
     public function sparepart(Request $request){
+        $supp = Brand::all();
+        if(isset($request->brand)){
+            if(isset($request->kendaraan)){
+                $products = DB::table('bengkel_products')->where('bengkel_products.kendaraan', '=', $request->kendaraan)
+                ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                ->where('brands.nama','like', '%' . $request->brand . '%')
+                ->where('nama_product','like', '%' . $request->cari . '%')
+                ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                ->get();
+            }
+            else{
+                $products = DB::table('bengkel_products')
+                ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                ->where('brands.nama','like', '%' . $request->brand . '%')
+                ->where('nama_product','like', '%' . $request->cari . '%')
+                ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                ->get();
+            }
+        }
 
-        $products = DB::table('bengkel_products')
-                    ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
-                    ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
-                    ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
-                    ->where('nama_product','like', '%' . $request->cari . '%')
-                    ->orWhere('brands.nama','like', '%' . $request->cari . '%')
-                    ->orWhere('sparepart_categories.nama','like', '%' . $request->cari . '%')
-                    ->orWhere('bengkels.nama_bengkel','like', '%' . $request->cari . '%')
-                    ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                    ->get();
+        else{
+            if(isset($request->kendaraan)){
+                $products = DB::table('bengkel_products')->where('bengkel_products.kendaraan', '=', $request->kendaraan)
+                ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                ->where('nama_product','like', '%' . $request->cari . '%')
+                ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                ->get();
+            }
+            else{
+                $products = DB::table('bengkel_products')
+                ->join('sparepart_categories', 'bengkel_products.id_categories', '=', 'sparepart_categories.id')
+                ->join('brands', 'brands.id','=','sparepart_categories.id_brand')
+                ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
+                ->where('nama_product','like', '%' . $request->cari . '%')
+                ->orWhere('sparepart_categories.nama','like', '%' . $request->cari . '%')
+                ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
+                ->get();
+            }
+        }
         
-        return view('search.sparepart', ['products' => $products]);
+        return view('search.sparepart', ['products' => $products, 'supp' => $supp]);
     }
 }

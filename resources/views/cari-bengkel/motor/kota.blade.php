@@ -8,30 +8,22 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/cari-bengkel/style.css">
-    <link rel="stylesheet" href="/main/css/style.css">
-    <title>Pilih Brand | caribengkel.id</title>
+    <title>Cari Bengkel Motor | caribengkel.id</title>
   </head>
   <body>
     <div class="title">
-      <h1 class="text-center">Cari Bengkel Mobil</h1>
+      <h1 class="text-center">Cari Bengkel Motor</h1>
     </div>
     <div class="subtitle">
-      <h5 class="text-center">Pilih Brand</h5>
+      <h5 class="text-center">Pilih Kota</h5>
     </div>
 
-    <div class="container">
-    <div class="row">
-        @foreach($brands as $brand)
-        <div class="col-md-3">
-            <div class="card card-brand zoom mb-3">
-            <a href="/search/bengkel/{{request()->segment(count(request()->segments()))}}?brand={{$brand->nama}}&kendaraan=mobil">
-                <img class="card-img-top brand-img" style="display:block" src="/brand-img/kia.png" alt="Card image cap">
-                <h1 class="m-0 mb-1" style="text-align:center">{{$brand->nama}}</h1>
-            </a>
-            </div>					
-        </div>
-        @endforeach
-    </div>
+    <div class="button-group">
+      <a class="btn btn-primary btn-lg btn-block btn-change" href="/cari-bengkel/motor/jakarta-pusat">Jakarta Pusat</a>
+      <a class="btn btn-primary btn-lg btn-block btn-change" href="/cari-bengkel/motor/jakarta-selatan">Jakarta Selatan</a>
+      <a class="btn btn-primary btn-lg btn-block btn-change" href="/cari-bengkel/motor/jakarta-timur">Jakarta Timur</a>
+      <a class="btn btn-primary btn-lg btn-block btn-change" href="/cari-bengkel/motor/jakarta-barat">Jakarta Barat</a>
+      <a class="btn btn-primary btn-lg btn-block btn-change" href="/cari-bengkel/motor/jakarta-utara">Jakarta Utara</a>
     </div>
 
     <!-- Optional JavaScript -->

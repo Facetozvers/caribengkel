@@ -7,8 +7,8 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="search-result bg-gray">
-					<h2>Hasil untuk "Bengkel"</h2>
-					<p>123 Hasil
+					<h2>Hasil untuk "{{request()->cari}}"</h2>
+					<p>{{count($products)}} Hasil
 				</div>
 			</div>
 		</div>
@@ -18,30 +18,17 @@
 					<div class="widget category-list">
                         <h4 class="widget-header">Kendaraan</h4>
                         <ul class="category-list">
-                            <li><a href="category.html">Mobil <span>93</span></a></li>
-                            <li><a href="category.html">Motor <span>233</span></a></li>
-                        </ul>
-                    </div>
-
-                    <div class="widget category-list">
-                        <h4 class="widget-header">Lokasi</h4>
-                        <ul class="category-list">
-                            <li><a href="category.html">Jakarta Pusat <span>93</span></a></li>
-                            <li><a href="category.html">Jakarta Barat <span>233</span></a></li>
-                            <li><a href="category.html">Jakarta Utara <span>183</span></a></li>
-                            <li><a href="category.html">Jakarta Selatan <span>120</span></a></li>
-                            <li><a href="category.html">Jakarta Timur <span>40</span></a></li>
+                            <li><a href="{{request()->fullUrlWithQuery(['kendaraan' => 'mobil'])}}">Mobil </a></li>
+                            <li><a href="{{request()->fullUrlWithQuery(['kendaraan' => 'motor'])}}">Motor </a></li>
                         </ul>
                     </div>
 
                     <div class="widget category-list">
                         <h4 class="widget-header">Supported Brand</h4>
                         <ul class="category-list">
-                            <li><a href="category.html">Honda <span>93</span></a></li>
-                            <li><a href="category.html">Yamaha <span>233</span></a></li>
-                            <li><a href="category.html">Suzuki <span>183</span></a></li>
-                            <li><a href="category.html">BMW <span>120</span></a></li>
-                            <li><a href="category.html">Toyota <span>40</span></a></li>
+                        @foreach($supp as $brand)
+                            <li><a href="{{request()->fullUrlWithQuery(['brand' => $brand->nama])}}">{{$brand->nama}} </a></li>
+                        @endforeach
                         </ul>
                     </div>
 				</div>

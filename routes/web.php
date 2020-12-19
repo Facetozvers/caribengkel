@@ -23,11 +23,18 @@ Auth::routes();
 Route::get('/bengkel/{id}', 'BengkelController@show');
 
 Route::get('/cari-bengkel/mobil', 'CariBengkelController@mobil');
-Route::get('/cari-bengkel/mobil/jakarta-timur', 'CariBengkelController@mobil');
-Route::get('/cari-bengkel/mobil/jakarta-barat', 'CariBengkelController@daerah');
-Route::get('/cari-bengkel/mobil/jakarta-selatan', 'CariBengkelController@daerah');
-Route::get('/cari-bengkel/mobil/jakarta-utara', 'CariBengkelController@daerah');
-Route::get('/cari-bengkel/mobil/jakarta-pusat', 'CariBengkelController@daerah');
+Route::get('/cari-bengkel/mobil/jakarta-timur', 'CariBengkelController@daerahMobil');
+Route::get('/cari-bengkel/mobil/jakarta-barat', 'CariBengkelController@daerahMobil');
+Route::get('/cari-bengkel/mobil/jakarta-selatan', 'CariBengkelController@daerahMobil');
+Route::get('/cari-bengkel/mobil/jakarta-utara', 'CariBengkelController@daerahMobil');
+Route::get('/cari-bengkel/mobil/jakarta-pusat', 'CariBengkelController@daerahMobil');
+
+Route::get('/cari-bengkel/motor', 'CariBengkelController@motor');
+Route::get('/cari-bengkel/motor/jakarta-timur', 'CariBengkelController@daerahMotor');
+Route::get('/cari-bengkel/motor/jakarta-barat', 'CariBengkelController@daerahMotor');
+Route::get('/cari-bengkel/motor/jakarta-selatan', 'CariBengkelController@daerahMotor');
+Route::get('/cari-bengkel/motor/jakarta-utara', 'CariBengkelController@daerahMotor');
+Route::get('/cari-bengkel/motor/jakarta-pusat', 'CariBengkelController@daerahMotor');
 
 
 

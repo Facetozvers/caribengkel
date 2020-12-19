@@ -37,11 +37,9 @@
                     <div class="widget category-list">
                         <h4 class="widget-header">Supported Brand</h4>
                         <ul class="category-list">
-                            <li><a href="category.html">Honda</a></li>
-                            <li><a href="category.html">Yamaha</a></li>
-                            <li><a href="category.html">Suzuki</a></li>
-                            <li><a href="category.html">BMW</a></li>
-                            <li><a href="category.html">Toyota</a></li>
+                        @foreach($supp as $brand)
+                            <li><a href="{{request()->fullUrlWithQuery(['brand' => $brand->nama])}}">{{$brand->nama}} </a></li>
+                        @endforeach
                         </ul>
                     </div>
 				</div>
