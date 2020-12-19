@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\UserWishlist;
 use App\UserBengkelFav;
 use App\BengkelProduct;
+use App\Bengkel;
+use Illuminate\Support\Facades\DB;
 use Auth;
 
 class ClientAreaController extends Controller
@@ -48,5 +50,41 @@ class ClientAreaController extends Controller
         $wishlist->delete();
 
         return redirect('/wishlist')->with('alert', 'Berhasil menghapus wishlist!');
+    }
+
+    public function bengkelFav(){
+        $bengkels = UserBengkelFav::where('id_user', Auth::id())
+        ->join('bengkels', 'bengkels.id' , '=', 'user_bengkel_favs.id_bengkel')
+        ->get();
+        foreach($bengkels as $bengkel){
+            $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
+            ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
+            ->select('brands.nama')
+            ->get();
+            foreach($specialities as $key => $value){
+                $bengkel->{'specialties'. $key} = $value->nama;
+            }
+        }
+        return view('client_area.bengkel-favorit', ['bengkels' => $bengkels]);
+    }
+
+    public function addToFav($id_bengkel){
+        $fav = new UserBengkelFav;
+        $fav->id_bengkel = $id_bengkel;
+        $fav->id_user = Auth::id();
+
+        $fav->save();
+
+        return redirect()->back()->with('alert', 'Berhasil menambahkan bengkel ke Favorit!');
+    }
+
+    public function deleteFav($id_bengkel){
+        $fav = UserBengkelFav::where('id_bengkel', '=', $id_bengkel)
+        ->where('id_user', '=', Auth::id())
+        ->first();
+
+        $fav->delete();
+
+        return redirect('/bengkel-favorit')->with('alert', 'Berhasil menghapus bengkel dari favorit!');
     }
 }

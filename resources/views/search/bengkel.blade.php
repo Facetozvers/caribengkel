@@ -85,7 +85,7 @@
                                             <img class="card-img-top img-fluid product-img-small" src="https://cdn-2.tstatic.net/tribunnews/foto/bank/images/bengkel-terbesar-yamaha.jpg" alt="Card image cap">
                                        
                                     </div>
-                                    <div class="card-body" style="height:280px">
+                                    <div class="card-body" style="height:280px;position:relative">
                                         <h4 class="card-title">{{$bengkel->nama_bengkel}}</h4>
                                         <p class="card-text mb-2"><i class="fas fa-map-marker-alt mr-1"></i>{{$bengkel->daerah}}, {{$bengkel->kota}}</p>
                                         <ul class="list-inline product-meta">
@@ -121,6 +121,7 @@
                                                 <li class="list-inline-item"><i class="fa fa-star"></i></li>
                                             </ul>
                                         </div>
+                                        <p style="position:absolute;height:15px;bottom:0px"><i class="fa fa-heart fa-md" style="color:red;"></i>   {{$bengkel->fav}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -188,7 +189,7 @@
                                             </ul>
                                         </div>
                                         <div style="position:absolute;bottom: 10px;height:25px;">
-                                            <a href="/wish/{{$product->id}}" class="" style="font-size:10px"><i class="fa fa-heart fa-2x" style="color:red"></i></a>
+                                            <a href="/wish/{{$product->id}}" class="" style="font-size:10px"><i class="fa fa-heart fa-md" style="color:red"></i>   Tambah ke wishlist</a>
                                         </div>
                                     </div>
                                 </div>

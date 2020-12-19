@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
@@ -54,3 +52,7 @@ Route::post('/discuss/reply', 'DiscussionController@submitReply')->middleware('a
 Route::get('/wishlist', 'ClientAreaController@wishlist')->middleware('auth');
 Route::get('/wish/{id_product}', 'ClientAreaController@addWishlist')->middleware('auth');
 Route::get('/unwish/{id_product}', 'ClientAreaController@deleteWishlist')->middleware('auth');
+
+Route::get('/bengkel-favorit', 'ClientAreaController@bengkelFav')->middleware('auth');
+Route::get('/fav/{id_bengkel}', 'ClientAreaController@addToFav')->middleware('auth');
+Route::get('/unfav/{id_bengkel}', 'ClientAreaController@deleteFav')->middleware('auth');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\UserBengkelFav;
 use App\Bengkel;
 use App\BengkelSpecialties;
 use App\BengkelProduct;
@@ -36,6 +37,7 @@ class SearchController extends Controller
                             foreach($specialities as $key => $value){
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
+                            $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                         }
     
                         $products = DB::table('bengkel_products')
@@ -67,6 +69,7 @@ class SearchController extends Controller
                             foreach($specialities as $key => $value){
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
+                            $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                         }
     
                         $products = DB::table('bengkel_products')
@@ -99,6 +102,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
 
                     $products = DB::table('bengkel_products')
@@ -130,6 +134,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
             
                     $products = DB::table('bengkel_products')
@@ -157,6 +162,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
             
                     $products = DB::table('bengkel_products')
@@ -187,6 +193,7 @@ class SearchController extends Controller
                     foreach($specialities as $key => $value){
                         $bengkel->{'specialties'. $key} = $value->nama;
                     }
+                    $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                 }
         
                 $products = DB::table('bengkel_products')
@@ -223,6 +230,7 @@ class SearchController extends Controller
                             foreach($specialities as $key => $value){
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
+                            $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                         }
     
                         $products = DB::table('bengkel_products')
@@ -250,6 +258,7 @@ class SearchController extends Controller
                             foreach($specialities as $key => $value){
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
+                            $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                         }
     
                         $products = DB::table('bengkel_products')
@@ -278,6 +287,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
 
                     $products = DB::table('bengkel_products')
@@ -307,6 +317,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
             
                     $products = DB::table('bengkel_products')
@@ -332,6 +343,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
             
                     $products = DB::table('bengkel_products')
@@ -357,6 +369,7 @@ class SearchController extends Controller
                     foreach($specialities as $key => $value){
                         $bengkel->{'specialties'. $key} = $value->nama;
                     }
+                    $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                 }
         
                 $products = DB::table('bengkel_products')
@@ -396,6 +409,7 @@ class SearchController extends Controller
                             foreach($specialities as $key => $value){
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
+                            $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                         }
     
                         $products = DB::table('bengkel_products')
@@ -423,6 +437,7 @@ class SearchController extends Controller
                             foreach($specialities as $key => $value){
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
+                            $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                         }
     
                         $products = DB::table('bengkel_products')
@@ -451,6 +466,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
 
                     $products = DB::table('bengkel_products')
@@ -480,6 +496,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
             
                     $products = DB::table('bengkel_products')
@@ -505,6 +522,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
             
                     $products = DB::table('bengkel_products')
@@ -530,6 +548,7 @@ class SearchController extends Controller
                     foreach($specialities as $key => $value){
                         $bengkel->{'specialties'. $key} = $value->nama;
                     }
+                    $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                 }
         
                 $products = DB::table('bengkel_products')
@@ -569,6 +588,7 @@ class SearchController extends Controller
                             foreach($specialities as $key => $value){
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
+                            $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                         }
     
                         $products = DB::table('bengkel_products')
@@ -596,6 +616,7 @@ class SearchController extends Controller
                             foreach($specialities as $key => $value){
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
+                            $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                         }
     
                         $products = DB::table('bengkel_products')
@@ -624,6 +645,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
 
                     $products = DB::table('bengkel_products')
@@ -653,6 +675,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
             
                     $products = DB::table('bengkel_products')
@@ -678,6 +701,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
             
                     $products = DB::table('bengkel_products')
@@ -703,6 +727,7 @@ class SearchController extends Controller
                     foreach($specialities as $key => $value){
                         $bengkel->{'specialties'. $key} = $value->nama;
                     }
+                    $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                 }
         
                 $products = DB::table('bengkel_products')
@@ -742,6 +767,7 @@ class SearchController extends Controller
                             foreach($specialities as $key => $value){
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
+                            $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                         }
     
                         $products = DB::table('bengkel_products')
@@ -769,6 +795,7 @@ class SearchController extends Controller
                             foreach($specialities as $key => $value){
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
+                            $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                         }
     
                         $products = DB::table('bengkel_products')
@@ -797,6 +824,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
 
                     $products = DB::table('bengkel_products')
@@ -826,6 +854,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
             
                     $products = DB::table('bengkel_products')
@@ -851,6 +880,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
             
                     $products = DB::table('bengkel_products')
@@ -876,6 +906,7 @@ class SearchController extends Controller
                     foreach($specialities as $key => $value){
                         $bengkel->{'specialties'. $key} = $value->nama;
                     }
+                    $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                 }
         
                 $products = DB::table('bengkel_products')
@@ -915,6 +946,7 @@ class SearchController extends Controller
                             foreach($specialities as $key => $value){
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
+                            $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                         }
     
                         $products = DB::table('bengkel_products')
@@ -942,6 +974,7 @@ class SearchController extends Controller
                             foreach($specialities as $key => $value){
                                 $bengkel->{'specialties'. $key} = $value->nama;
                             }
+                            $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                         }
     
                         $products = DB::table('bengkel_products')
@@ -970,6 +1003,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
 
                     $products = DB::table('bengkel_products')
@@ -999,6 +1033,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
             
                     $products = DB::table('bengkel_products')
@@ -1024,6 +1059,7 @@ class SearchController extends Controller
                         foreach($specialities as $key => $value){
                             $bengkel->{'specialties'. $key} = $value->nama;
                         }
+                        $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                     }
             
                     $products = DB::table('bengkel_products')
@@ -1049,6 +1085,7 @@ class SearchController extends Controller
                     foreach($specialities as $key => $value){
                         $bengkel->{'specialties'. $key} = $value->nama;
                     }
+                    $bengkel->fav = UserBengkelFav::where('id_bengkel', $bengkel->id)->get()->count();
                 }
         
                 $products = DB::table('bengkel_products')

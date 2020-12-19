@@ -60,9 +60,6 @@
 								<a class="nav-link" id="pills-sparepart-tab" data-toggle="pill" href="#pills-sparepart" role="tab" aria-controls="pills-sparepart" aria-selected="false">Sparepart</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Reviews</a>
-							</li>
-							<li class="nav-item">
 								<a class="nav-link" id="pills-discuss-tab" data-toggle="pill" href="#pills-discuss" role="tab" aria-controls="pills-discuss" aria-selected="false">Diskusi</a>
 							</li>
 						</ul>
@@ -171,71 +168,7 @@
 								@endforeach
 								</div>
 							</div>
-							<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-								<h3 class="tab-title">Product Review</h3>
-								<div class="product-review">
-							  		<div class="media">
-							  			<!-- Avater -->
-							  			<img src="https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png" alt="avater">
-							  			<div class="media-body">
-							  				<!-- Ratings -->
-							  				<div class="ratings">
-							  					<ul class="list-inline">
-							  						<li class="list-inline-item">
-							  							<i class="fa fa-star"></i>
-							  						</li>
-							  						<li class="list-inline-item">
-							  							<i class="fa fa-star"></i>
-							  						</li>
-							  						<li class="list-inline-item">
-							  							<i class="fa fa-star"></i>
-							  						</li>
-							  						<li class="list-inline-item">
-							  							<i class="fa fa-star"></i>
-							  						</li>
-							  						<li class="list-inline-item">
-							  							<i class="fa fa-star"></i>
-							  						</li>
-							  					</ul>
-							  				</div>
-							  				<div class="name">
-							  					<h5>Jessica Brown</h5>
-							  				</div>
-							  				<div class="date">
-							  					<p>Mar 20, 2018</p>
-							  				</div>
-							  				<div class="review-comment">
-							  					<p>
-							  						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremqe laudant tota rem ape riamipsa eaque.
-							  					</p>
-							  				</div>
-							  			</div>
-							  		</div>
-							  		<div class="review-submission">
-							  			<h3 class="tab-title">Submit your review</h3>
-						  				<!-- Rate -->
-						  				<div class="rate">
-						  					<div class="starrr"></div>
-						  				</div>
-						  				<div class="review-submit">
-						  					<form action="#" class="row">
-						  						<div class="col-lg-6">
-						  							<input type="text" name="name" id="name" class="form-control" placeholder="Name">
-						  						</div>
-						  						<div class="col-lg-6">
-						  							<input type="email" name="email" id="email" class="form-control" placeholder="Email">
-						  						</div>
-						  						<div class="col-12">
-						  							<textarea name="review" id="review" rows="10" class="form-control" placeholder="Message"></textarea>
-						  						</div>
-						  						<div class="col-12">
-						  							<button type="submit" class="btn btn-main">Sumbit</button>
-						  						</div>
-						  					</form>
-						  				</div>
-							  		</div>
-							  	</div>
-							</div>
+							
 							<div class="tab-pane fade" id="pills-discuss" role="tabpanel" aria-labelledby="pills-discuss-tab">
 								<h3 class="tab-title">Diskusi</h3>
 								<div class="product-review">
@@ -320,6 +253,7 @@
 						<p class="member-time">Sejak {{date('d F Y', strtotime($bengkel->created_at))}}</p>
 						<p>Contact :</p>
 						<p><i class="fa fa-phone"></i>  {{$bengkel->telp}}</p>
+						<a class="btn btn-main" style="padding: 10px 10px" href="/fav/{{$bengkel->id}}"><i class="fa fa-plus"></i>  Tambah ke Favorit</a>
 					</div>
 					<!-- Map Widget -->
 					<div class="widget map">
