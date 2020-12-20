@@ -146,15 +146,7 @@
 									@endisset
 								</p>
 							</ul>
-							<div class="product-ratings">
-								<ul class="list-inline">
-									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-									<li class="list-inline-item"><i class="fa fa-star"></i></li>
-								</ul>
-							</div>
+							
 							<p style="position:absolute;height:30px;bottom:2px"><i class="fa fa-heart fa-md" style="color:red;"></i>   {{$bengkel->fav}}</p>
 						</div>
 					</div>

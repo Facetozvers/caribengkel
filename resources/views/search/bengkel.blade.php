@@ -110,15 +110,7 @@
                                                 @endisset
                                             </p>
                                         </ul>
-                                        <div class="product-ratings">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
+                                        
                                         <p style="position:absolute;height:15px;bottom:0px"><i class="fa fa-heart fa-md" style="color:red;"></i>   {{$bengkel->fav}}</p>
                                     </div>
                                 </div>
@@ -161,15 +153,7 @@
                                                 <p class="card-text ">{{$product->nama_brand}}</p>
                                             </div>
                                         </div>
-                                        <div class="product-ratings">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
+                                        
                                         <div style="position:absolute;bottom: 10px;height:25px;">
                                             <a href="/wish/{{$product->id}}" class="" style="font-size:10px"><i class="fa fa-heart fa-md" style="color:red"></i>   Tambah ke wishlist</a>
                                         </div>

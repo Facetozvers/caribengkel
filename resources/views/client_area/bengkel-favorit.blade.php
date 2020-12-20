@@ -50,15 +50,7 @@
 									@endisset
 								</p>
 							</ul>
-							<div class="product-ratings">
-								<ul class="list-inline">
-									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-									<li class="list-inline-item"><i class="fa fa-star"></i></li>
-								</ul>
-							</div>
+							
                             <a href="/unfav/{{$bengkel->id}}" class="btn btn-danger" style="position:absolute;bottom:7px;height:35px;padding: 10px 7px; font-size: 10px">Hapus</a>
 						</div>
 					</div>
