@@ -143,7 +143,7 @@
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
-                                        <img class="card-img-top img-fluid product-img-small" src="https://media.astraotoshop.com/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/y/h/yh-f22a0-vgn-1700.jpg" alt="Card image cap">
+                                        <img class="card-img-top img-fluid product-img-small" src="/produk-img/{{$product->picUrl}}" alt="Card image cap">
                                     </div>
                                     <div class="card-body" style="height:300px; position:relative">
                                         <h4 class="card-title" style="font-size:16px">{{$product->nama_product}}</h4>
