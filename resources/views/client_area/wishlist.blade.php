@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.wsearch2')
 @section('title', 'Wishlist | caribengkel.id')
 @section('content')
     <section class="section bg-light" style="padding-top:40px">

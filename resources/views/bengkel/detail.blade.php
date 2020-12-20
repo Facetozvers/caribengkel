@@ -1,4 +1,4 @@
-@extends('layouts.wsearch')
+@extends('layouts.wsearch2')
 @section('title', $bengkel->nama_bengkel.' | caribengkel.id')
 @section('content')
 
