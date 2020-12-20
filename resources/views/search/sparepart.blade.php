@@ -60,6 +60,9 @@
                 </div>
 				<div class="product-grid-list">
 					<div class="row mt-30">
+                        @if(count($products) == 0)
+                        <p class="mt-3 mb-5" style="text-align:center;margin:auto">Sparepart tidak ditemukan</p>
+                        @endif
                         @foreach($products as $product)
 						<div class="col-sm-12 col-lg-4 col-md-6">
                         <a href="/bengkel/{{$product->id_bengkel}}">
@@ -107,23 +110,7 @@
                 </div>
 				<div class="pagination justify-content-center">
 					<nav aria-label="Page navigation example">
-						<ul class="pagination">
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Previous">
-									<span aria-hidden="true">&laquo;</span>
-									<span class="sr-only">Previous</span>
-								</a>
-							</li>
-							<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Next">
-									<span aria-hidden="true">&raquo;</span>
-									<span class="sr-only">Next</span>
-								</a>
-							</li>
-						</ul>
+                        {!!$products->links()!!}
 					</nav>
 				</div>
 			</div>

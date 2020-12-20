@@ -28,7 +28,7 @@ class SearchController extends Controller
                             ->orWhere('alamat','like', '%' . $cari . '%')
                             ->orWhere('daerah','like', '%' . $cari . '%');
                             })
-                        ->get();
+                            ->paginate(9);
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                             ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -60,7 +60,7 @@ class SearchController extends Controller
                             ->orWhere('alamat','like', '%' . $cari . '%')
                             ->orWhere('daerah','like', '%' . $cari . '%');
                             })
-                        ->get();
+                            ->paginate(9);
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                             ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -93,7 +93,7 @@ class SearchController extends Controller
                         ->orWhere('alamat','like', '%' . $cari . '%')
                         ->orWhere('daerah','like', '%' . $cari . '%');
                         })
-                    ->get();
+                        ->paginate(9);
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                         ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -125,7 +125,7 @@ class SearchController extends Controller
                     ->orWhere('kota','like', '%' . $request->cari . '%')
                     ->orWhere('alamat','like', '%' . $request->cari . '%')
                     ->orWhere('daerah','like', '%' . $request->cari . '%')
-                    ->get();
+                    ->paginate(9);
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                         ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -153,7 +153,7 @@ class SearchController extends Controller
                     ->orWhere('kota','like', '%' . $request->cari . '%')
                     ->orWhere('alamat','like', '%' . $request->cari . '%')
                     ->orWhere('daerah','like', '%' . $request->cari . '%')
-                    ->get();
+                    ->paginate(9);
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                         ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -184,7 +184,7 @@ class SearchController extends Controller
                 ->orWhere('kota','like', '%' . $request->cari . '%')
                 ->orWhere('alamat','like', '%' . $request->cari . '%')
                 ->orWhere('daerah','like', '%' . $request->cari . '%')
-                ->get();
+                ->paginate(9);
                 foreach($bengkels as $bengkel){
                     $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                     ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -221,7 +221,7 @@ class SearchController extends Controller
                         ->where('mobil', '=' , '1')
                         ->where('kota', '=' , 'Jakarta Timur')
                         ->where('nama_bengkel','like', '%' . $cari . '%')
-                        ->get();
+                        ->paginate(9);
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                             ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -249,7 +249,7 @@ class SearchController extends Controller
                         ->where('motor', '=' , '1')
                         ->where('kota', '=' , 'Jakarta Timur')
                         ->where('nama_bengkel','like', '%' . $cari . '%')
-                        ->get();
+                        ->paginate(9);
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                             ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -278,7 +278,7 @@ class SearchController extends Controller
                     ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
                     ->where('kota', '=' , 'Jakarta Timur')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                         ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -307,7 +307,7 @@ class SearchController extends Controller
                     $bengkels = Bengkel::where('kota', '=' , 'Jakarta Timur')
                     ->where('mobil', '=', '1')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -333,7 +333,7 @@ class SearchController extends Controller
                     $bengkels = Bengkel::where('kota', '=' , 'Jakarta Timur')
                     ->where('motor', '=', '1')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -359,7 +359,7 @@ class SearchController extends Controller
             else{
                 $bengkels = Bengkel::where('kota', '=' , 'Jakarta Timur')
                 ->where('nama_bengkel','like', '%' . $cari . '%')
-                ->get();
+                ->paginate(9);
                 
                 foreach($bengkels as $bengkel){
                     $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -400,7 +400,7 @@ class SearchController extends Controller
                         ->where('mobil', '=' , '1')
                         ->where('kota', '=' , 'Jakarta Pusat')
                         ->where('nama_bengkel','like', '%' . $cari . '%')
-                        ->get();
+                        ->paginate(9);
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                             ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -428,7 +428,7 @@ class SearchController extends Controller
                         ->where('motor', '=' , '1')
                         ->where('kota', '=' , 'Jakarta Pusat')
                         ->where('nama_bengkel','like', '%' . $cari . '%')
-                        ->get();
+                        ->paginate(9);
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                             ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -457,7 +457,7 @@ class SearchController extends Controller
                     ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
                     ->where('kota', '=' , 'Jakarta Pusat')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                         ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -486,7 +486,7 @@ class SearchController extends Controller
                     $bengkels = Bengkel::where('kota', '=' , 'Jakarta Pusat')
                     ->where('mobil', '=', '1')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -512,7 +512,7 @@ class SearchController extends Controller
                     $bengkels = Bengkel::where('kota', '=' , 'Jakarta Pusat')
                     ->where('motor', '=', '1')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -538,7 +538,7 @@ class SearchController extends Controller
             else{
                 $bengkels = Bengkel::where('kota', '=' , 'Jakarta Pusat')
                 ->where('nama_bengkel','like', '%' . $cari . '%')
-                ->get();
+                ->paginate(9);
                 
                 foreach($bengkels as $bengkel){
                     $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -579,7 +579,7 @@ class SearchController extends Controller
                         ->where('mobil', '=' , '1')
                         ->where('kota', '=' , 'Jakarta Selatan')
                         ->where('nama_bengkel','like', '%' . $cari . '%')
-                        ->get();
+                        ->paginate(9);
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                             ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -607,7 +607,7 @@ class SearchController extends Controller
                         ->where('motor', '=' , '1')
                         ->where('kota', '=' , 'Jakarta Selatan')
                         ->where('nama_bengkel','like', '%' . $cari . '%')
-                        ->get();
+                        ->paginate(9);
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                             ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -636,7 +636,7 @@ class SearchController extends Controller
                     ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
                     ->where('kota', '=' , 'Jakarta Selatan')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                         ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -665,7 +665,7 @@ class SearchController extends Controller
                     $bengkels = Bengkel::where('kota', '=' , 'Jakarta Selatan')
                     ->where('mobil', '=', '1')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -691,7 +691,7 @@ class SearchController extends Controller
                     $bengkels = Bengkel::where('kota', '=' , 'Jakarta Selatan')
                     ->where('motor', '=', '1')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -717,7 +717,7 @@ class SearchController extends Controller
             else{
                 $bengkels = Bengkel::where('kota', '=' , 'Jakarta Selatan')
                 ->where('nama_bengkel','like', '%' . $cari . '%')
-                ->get();
+                ->paginate(9);
                 
                 foreach($bengkels as $bengkel){
                     $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -758,7 +758,7 @@ class SearchController extends Controller
                         ->where('mobil', '=' , '1')
                         ->where('kota', '=' , 'Jakarta Barat')
                         ->where('nama_bengkel','like', '%' . $cari . '%')
-                        ->get();
+                        ->paginate(9);
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                             ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -786,7 +786,7 @@ class SearchController extends Controller
                         ->where('motor', '=' , '1')
                         ->where('kota', '=' , 'Jakarta Barat')
                         ->where('nama_bengkel','like', '%' . $cari . '%')
-                        ->get();
+                        ->paginate(9);
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                             ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -815,7 +815,7 @@ class SearchController extends Controller
                     ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
                     ->where('kota', '=' , 'Jakarta Barat')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                         ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -844,7 +844,7 @@ class SearchController extends Controller
                     $bengkels = Bengkel::where('kota', '=' , 'Jakarta Barat')
                     ->where('mobil', '=', '1')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -870,7 +870,7 @@ class SearchController extends Controller
                     $bengkels = Bengkel::where('kota', '=' , 'Jakarta Barat')
                     ->where('motor', '=', '1')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -896,7 +896,7 @@ class SearchController extends Controller
             else{
                 $bengkels = Bengkel::where('kota', '=' , 'Jakarta Barat')
                 ->where('nama_bengkel','like', '%' . $cari . '%')
-                ->get();
+                ->paginate(9);
                 
                 foreach($bengkels as $bengkel){
                     $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -937,7 +937,7 @@ class SearchController extends Controller
                         ->where('mobil', '=' , '1')
                         ->where('kota', '=' , 'Jakarta Utara')
                         ->where('nama_bengkel','like', '%' . $cari . '%')
-                        ->get();
+                        ->paginate(9);
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                             ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -965,7 +965,7 @@ class SearchController extends Controller
                         ->where('motor', '=' , '1')
                         ->where('kota', '=' , 'Jakarta Utara')
                         ->where('nama_bengkel','like', '%' . $cari . '%')
-                        ->get();
+                        ->paginate(9);
                         foreach($bengkels as $bengkel){
                             $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                             ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -994,7 +994,7 @@ class SearchController extends Controller
                     ->join('bengkels', 'bengkels.id', '=', 'bengkel_specialties.id_bengkel')
                     ->where('kota', '=' , 'Jakarta Utara')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
                         ->join('brands', 'brands.id', '=', 'bengkel_specialties.id_brand')
@@ -1023,7 +1023,7 @@ class SearchController extends Controller
                     $bengkels = Bengkel::where('kota', '=' , 'Jakarta Utara')
                     ->where('mobil', '=', '1')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -1049,7 +1049,7 @@ class SearchController extends Controller
                     $bengkels = Bengkel::where('kota', '=' , 'Jakarta Utara')
                     ->where('motor', '=', '1')
                     ->where('nama_bengkel','like', '%' . $cari . '%')
-                    ->get();
+                    ->paginate(9);
                     
                     foreach($bengkels as $bengkel){
                         $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -1075,7 +1075,7 @@ class SearchController extends Controller
             else{
                 $bengkels = Bengkel::where('kota', '=' , 'Jakarta Utara')
                 ->where('nama_bengkel','like', '%' . $cari . '%')
-                ->get();
+                ->paginate(9);
                 
                 foreach($bengkels as $bengkel){
                     $specialities = DB::table('bengkel_specialties')->where('id_bengkel','=', $bengkel->id)
@@ -1115,7 +1115,7 @@ class SearchController extends Controller
                 ->where('brands.nama','like', '%' . $request->brand . '%')
                 ->where('nama_product','like', '%' . $request->cari . '%')
                 ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                ->get();
+                ->paginate(9);
             }
             else{
                 $products = DB::table('bengkel_products')
@@ -1125,7 +1125,7 @@ class SearchController extends Controller
                 ->where('brands.nama','like', '%' . $request->brand . '%')
                 ->where('nama_product','like', '%' . $request->cari . '%')
                 ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                ->get();
+                ->paginate(9);
             }
         }
 
@@ -1137,7 +1137,7 @@ class SearchController extends Controller
                 ->join('bengkels', 'bengkels.id','bengkel_products.id_bengkel')
                 ->where('nama_product','like', '%' . $request->cari . '%')
                 ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                ->get();
+                ->paginate(9);
             }
             else{
                 $products = DB::table('bengkel_products')
@@ -1147,7 +1147,7 @@ class SearchController extends Controller
                 ->where('nama_product','like', '%' . $request->cari . '%')
                 ->orWhere('sparepart_categories.nama','like', '%' . $request->cari . '%')
                 ->select(DB::raw('brands.nama as nama_brand'), DB::raw('sparepart_categories.nama as nama_kategori'), 'bengkels.nama_bengkel','bengkel_products.*')
-                ->get();
+                ->paginate(9);
             }
         }
         
