@@ -23,16 +23,20 @@
 						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 						<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 						<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+						<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
 					</ol>
 					<div class="carousel-inner" style="background: #8c8c8c; box-shadow:1px 1px 10px #808080;">
 						<div class="carousel-item active">
-							<img class="d-block carousel-bengkel-img" src="http://www.reachautoerp.sg/wp-content/uploads/2019/04/car-workshop.jpg" alt="First slide">
+							<img class="d-block carousel-bengkel-img" src="/bengkel-img/{{$bengkel->subPic}}/1.jpg" alt="First slide">
 						</div>
 						<div class="carousel-item">
-							<img class="d-block carousel-bengkel-img" src="https://images.allaboutwhitianga.co.nz/thumbnail/1500x500s/52/79/93/charlies-workshop-85-1499398020.jpg" alt="Second slide">
+							<img class="d-block carousel-bengkel-img" src="/bengkel-img/{{$bengkel->subPic}}/2.jpg" alt="Second slide">
 						</div>
 						<div class="carousel-item">
-							<img class="d-block carousel-bengkel-img" src="https://op-jacaranda.s3.amazonaws.com/uploads/listing/images/3694/1st_Automobile_Services.jpg" alt="Third slide">
+							<img class="d-block carousel-bengkel-img" src="/bengkel-img/{{$bengkel->subPic}}/3.jpg" alt="Third slide">
+						</div>
+						<div class="carousel-item">
+							<img class="d-block carousel-bengkel-img" src="/bengkel-img/{{$bengkel->subPic}}/4.jpg" alt="Third slide">
 						</div>
 					</div>
 					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -102,7 +106,7 @@
 										<div class="card mb-4">
 											<div class="row no-gutters">
 												<div class="col-md-4">
-													<img src="{{$product->picUrl}}" class="img-fluid mx-auto d-block" style="width:auto;height:200px;object-fit:cover" alt="">
+													<img src="/produk-img/{{$product->picUrl}}" class="img-fluid mx-auto d-block" style="width:auto;height:200px;object-fit:cover" alt="">
 												</div>
 												<div class="col-md-8" style="border-left: 1px solid #aaaaaa">
 													<div class="card-block pl-3 pt-3">
@@ -140,7 +144,7 @@
 										<div class="card mb-4">
 											<div class="row no-gutters">
 												<div class="col-md-4">
-													<img src="{{$product->picUrl}}" class="img-fluid" style="width:auto;height:200px;object-fit:cover" alt="">
+													<img src="/produk-img/{{$product->picUrl}}" class="img-fluid" style="width:auto;height:200px;object-fit:cover" alt="">
 												</div>
 												<div class="col-md-8" style="border-left: 1px solid #aaaaaa">
 													<div class="card-block pl-3 pt-3">

@@ -17,7 +17,7 @@
                 @foreach($wishlists as $wish)
                 <div class="col-md-3">
                     <div class="card">
-                        <img class="card-img-top bengkel-img" src="{{$wish->picUrl}}" alt="Card image cap">
+                        <img class="card-img-top bengkel-img" src="/produk-img/{{$wish->picUrl}}" alt="Card image cap">
                         <div class="card-body" style="position:relative;height:110px">
                             <h5 class="card-title" style="font-size:13px">{{$wish->nama_product}}</h5>
                             <p class="card-title" style="font-size:13px">{{$wish->nama_bengkel}}</p>

@@ -81,9 +81,7 @@
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
-                                        
-                                            <img class="card-img-top img-fluid product-img-small" src="https://cdn-2.tstatic.net/tribunnews/foto/bank/images/bengkel-terbesar-yamaha.jpg" alt="Card image cap">
-                                       
+                                        <img class="card-img-top img-fluid product-img-small" src="/bengkel-img/{{$bengkel->picUrl}}.jpg" alt="Card image cap">
                                     </div>
                                     <div class="card-body" style="height:280px;position:relative">
                                         <h4 class="card-title">{{$bengkel->nama_bengkel}}</h4>
